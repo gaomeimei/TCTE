@@ -1,0 +1,29 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+
+body {
+}
+
+a {
+}
+
+.field-validation-error {
+	display: block;
+	padding-top: 5px;
+	font-size: 12px;
+	color: #cc3f44;
+}
+
+.input-validation-error {
+	border-color: #cc3f44 !important;
+	color: #cc3f44 !important;
+}
+
+/*解决导航条bug*/
+.user-info-navbar .user-info-menu > li > a{
+    border: none !important;
+}
+

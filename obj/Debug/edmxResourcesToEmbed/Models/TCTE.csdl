@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TCTE.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="Identitycard" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyId" Type="Int32" />
+    <NavigationProperty Name="Company" Relationship="Self.FK__Client__CompanyI__1273C1CD" FromRole="Client" ToRole="Company" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__ClientId__22AA2996" FromRole="Client" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK__Client__CompanyI__1273C1CD" FromRole="Company" ToRole="Client" />
+    <NavigationProperty Name="Stores" Relationship="Self.FK__Store__CompanyId__15502E78" FromRole="Company" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Device">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SerializeNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Device__StoreId__1B0907CE" FromRole="Device" ToRole="Store" />
+    <NavigationProperty Name="DeviceAuthorizes" Relationship="Self.FK__DeviceAut__Devic__1DE57479" FromRole="Device" ToRole="DeviceAuthorize" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__DeviceId__239E4DCF" FromRole="Device" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="DeviceAuthorize">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Device" Relationship="Self.FK__DeviceAut__Devic__1DE57479" FromRole="DeviceAuthorize" ToRole="Device" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__DeviceAut__Emplo__1ED998B2" FromRole="DeviceAuthorize" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AddressName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Comment" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+    <Property Name="TrainingDate" Type="DateTime" Precision="3" />
+    <Property Name="FingerPrint" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="IsLicenced" Type="Boolean" />
+    <NavigationProperty Name="DeviceAuthorizes" Relationship="Self.FK__DeviceAut__Emplo__1ED998B2" FromRole="Employee" ToRole="DeviceAuthorize" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Employee__StoreI__182C9B23" FromRole="Employee" ToRole="Store" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__EmployeeI__24927208" FromRole="Employee" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoreId" Type="Int32" />
+    <Property Name="ClientId" Type="Int32" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="DeviceId" Type="Int32" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <NavigationProperty Name="Client" Relationship="Self.FK__Order__ClientId__22AA2996" FromRole="Order" ToRole="Client" />
+    <NavigationProperty Name="Device" Relationship="Self.FK__Order__DeviceId__239E4DCF" FromRole="Order" ToRole="Device" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK__Order__EmployeeI__24927208" FromRole="Order" ToRole="Employee" />
+    <NavigationProperty Name="Store" Relationship="Self.FK__Order__StoreId__21B6055D" FromRole="Order" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyId" Type="Int32" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Company" Relationship="Self.FK__Store__CompanyId__15502E78" FromRole="Store" ToRole="Company" />
+    <NavigationProperty Name="Devices" Relationship="Self.FK__Device__StoreId__1B0907CE" FromRole="Store" ToRole="Device" />
+    <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__StoreI__182C9B23" FromRole="Store" ToRole="Employee" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Order__StoreId__21B6055D" FromRole="Store" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK__Client__CompanyI__1273C1CD">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Client" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Client">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__ClientId__22AA2996">
+    <End Role="Client" Type="Self.Client" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Store__CompanyId__15502E78">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Device__StoreId__1B0907CE">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Device" Type="Self.Device" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Device">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceAut__Devic__1DE57479">
+    <End Role="Device" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="DeviceAuthorize" Type="Self.DeviceAuthorize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceAuthorize">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__DeviceId__239E4DCF">
+    <End Role="Device" Type="Self.Device" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Device">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="DeviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__DeviceAut__Emplo__1ED998B2">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="DeviceAuthorize" Type="Self.DeviceAuthorize" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="DeviceAuthorize">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Employee__StoreI__182C9B23">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__EmployeeI__24927208">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Order__StoreId__21B6055D">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="StoreId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TCTEEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Companies" EntityType="Self.Company" />
+    <EntitySet Name="Devices" EntityType="Self.Device" />
+    <EntitySet Name="DeviceAuthorizes" EntityType="Self.DeviceAuthorize" />
+    <EntitySet Name="Employees" EntityType="Self.Employee" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <AssociationSet Name="FK__Client__CompanyI__1273C1CD" Association="Self.FK__Client__CompanyI__1273C1CD">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Client" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__ClientId__22AA2996" Association="Self.FK__Order__ClientId__22AA2996">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Store__CompanyId__15502E78" Association="Self.FK__Store__CompanyId__15502E78">
+      <End Role="Company" EntitySet="Companies" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Device__StoreId__1B0907CE" Association="Self.FK__Device__StoreId__1B0907CE">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Device" EntitySet="Devices" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceAut__Devic__1DE57479" Association="Self.FK__DeviceAut__Devic__1DE57479">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="DeviceAuthorize" EntitySet="DeviceAuthorizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__DeviceId__239E4DCF" Association="Self.FK__Order__DeviceId__239E4DCF">
+      <End Role="Device" EntitySet="Devices" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__DeviceAut__Emplo__1ED998B2" Association="Self.FK__DeviceAut__Emplo__1ED998B2">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="DeviceAuthorize" EntitySet="DeviceAuthorizes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Employee__StoreI__182C9B23" Association="Self.FK__Employee__StoreI__182C9B23">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Employee" EntitySet="Employees" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__EmployeeI__24927208" Association="Self.FK__Order__EmployeeI__24927208">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Order__StoreId__21B6055D" Association="Self.FK__Order__StoreId__21B6055D">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

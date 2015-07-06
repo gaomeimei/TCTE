@@ -1,0 +1,43 @@
+﻿@model TCTE.Models.Terminal
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Terminal</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SalesMan.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SalesMan.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SerialNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SerialNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

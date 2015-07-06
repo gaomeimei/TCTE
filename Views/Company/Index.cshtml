@@ -1,0 +1,67 @@
+﻿@model IEnumerable<TCTE.Models.Company>
+
+@{
+    ViewBag.Title = "商家列表";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+}
+
+@section  ListHeader{
+    <th class="sorting_asc">
+        @Html.DisplayNameFor(model => model.Code)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.Name)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.FirstServiceDate)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.OrderCount)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.CreatedDate)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.ContactName)
+    </th>
+    <th class="sorting">
+        @Html.DisplayNameFor(model => model.Phone)
+    </th>
+    <th>操作</th>
+}
+
+@section ListBody{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstServiceDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderCount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>            
+            <td style="white-space:nowrap">
+                @Html.ActionLink("编辑", "Edit", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm btn-icon icon-left" })
+                @Html.ActionLink("查看", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm btn-icon icon-left" })
+                @Html.ActionLink("删除", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm btn-icon icon-left btn-del" })
+            </td>
+        </tr>
+    }
+}
+
+

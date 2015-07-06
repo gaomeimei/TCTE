@@ -1,0 +1,74 @@
+﻿@using TCTE.Models.SystemType;
+
+@{
+    var str = string.Empty;
+    if (Model is Gender)
+    {
+        switch ((Gender)Model)
+        {
+            case Gender.Male:
+                str = "男";
+                break;
+            case Gender.Female:
+                str = "女";
+                break;
+            default:
+                break;
+        }
+    }
+    else if (Model is OrderStatus)
+    {
+        switch ((OrderStatus)Model)
+        {
+            case OrderStatus.Created:
+                str = "已创建";
+                break;
+            case OrderStatus.Started:
+                str = "正在处理";
+                break;
+            case OrderStatus.Ended:
+                str = "已完成";
+                break;
+            default:
+                break;
+        }
+    }
+    else if (Model is Source)
+    {
+        switch ((Source)Model)
+        {
+            case Source.Phone:
+                str = "电话";
+                break;
+            case Source.Website:
+                str = "网站";
+                break;
+            case Source.WebChat:
+                str = "微信";
+                break;
+            default:
+                break;
+        }
+    }
+    else if (Model is TerminalStatus)
+    {
+        switch ((TerminalStatus)Model)
+        {
+            case TerminalStatus.NotInitialized:
+                str = "未初始化";
+                break;
+            case TerminalStatus.Normal:
+                str = "正常";
+                break;
+            case TerminalStatus.Malfunction:
+                str = "故障";
+                break;
+            case TerminalStatus.Repairing:
+                str = "维修中";
+                break;
+            default:
+                break;
+        }
+    }
+}
+@str

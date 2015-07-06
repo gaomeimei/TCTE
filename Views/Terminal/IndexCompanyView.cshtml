@@ -1,0 +1,42 @@
+﻿@model IEnumerable<TCTE.Models.Terminal>
+
+@{
+    ViewBag.Title = "设备列表";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+
+}
+
+@section ListHeader{
+    <th>
+        @Html.DisplayNameFor(model => model.Code)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Status)
+    </th>
+
+    <th>操作</th>
+}
+
+@section ListBody{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+
+            <td style="white-space:nowrap">
+                @Html.ActionLink("修改状态", "Details", new { id = item.Id }, new { @class = "btn btn-info btn-sm btn-icon icon-left" })
+            </td>
+        </tr>
+    }
+}
+
+@section scripts{
+    <script>
+        $("#link_AddData").hide();
+    </script>
+}

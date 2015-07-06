@@ -1,0 +1,37 @@
+﻿@model IEnumerable<TCTE.Models.RegistrationRequest>
+
+@{
+    ViewBag.Title = "以下设备正在请求激活";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+}
+
+@section ListHeader{
+    <th>
+        @Html.DisplayNameFor(model => model.RequestDate)
+    </th>
+    <th>操作</th>
+}
+
+@section ListBody{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td style="white-space:nowrap">
+                @using (Html.BeginForm("Register", "Terminal", new { id = item.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="通过审核" class="btn btn-secondary btn-sm btn-icon icon-left" />
+                }
+            </td>
+        </tr>
+    }
+}
+
+@section scripts{
+    <script>
+        $("#link_AddData").hide();
+    </script>
+}

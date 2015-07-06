@@ -1,0 +1,99 @@
+﻿@model TCTE.Models.SalesMan
+
+@{
+    ViewBag.Title = "添加业务员";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Gender, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="radio">
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, TCTE.Models.SystemType.Gender.Male, new { @checked = "checked" })男
+                    </label>
+                    <label>
+                        @Html.RadioButtonFor(model => model.Gender, TCTE.Models.SystemType.Gender.Female)女
+                    </label>
+                </div>
+                @Html.ValidationMessageFor(model => model.Gender)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdentityCard, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.IdentityCard, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.IdentityCard)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TranningDate, new { @class = "control-label col-md-2" })
+            <div class="col-sm-10">
+                <div class="input-group">
+                    @{
+                        var htmlAttributes = new Dictionary<string, object>();
+                        htmlAttributes.Add("class", "form-control datepicker");
+                        htmlAttributes.Add("data-format", "yyyy-mm-dd");
+                    }
+                    @Html.TextBoxFor(model => model.TranningDate, "{0:yyyy-MM-dd}",htmlAttributes)
+                    <div class="input-group-addon">
+                        <a href="#"><i class="linecons-calendar"></i></a>
+                    </div>
+                </div>
+                @Html.ValidationMessageFor(model => model.TranningDate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="保存" class="btn btn-success btn-block btn-lg" />
+            </div>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/js/datepicker/bootstrap-datepicker.js"></script>
+}

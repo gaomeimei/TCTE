@@ -1,0 +1,194 @@
+D:\Project\TCTE\TCTE\TCTE\bin\TCTE.dll.config
+D:\Project\TCTE\TCTE\TCTE\bin\TCTE.dll
+D:\Project\TCTE\TCTE\TCTE\bin\TCTE.pdb
+D:\Project\TCTE\TCTE\TCTE\bin\Antlr3.Runtime.dll
+D:\Project\TCTE\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\TCTE\TCTE\TCTE\bin\Newtonsoft.Json.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Net.Http.Formatting.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Helpers.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Http.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Http.WebHost.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Mvc.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Optimization.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Razor.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.Deployment.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.dll
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.Razor.dll
+D:\Project\TCTE\TCTE\TCTE\bin\WebGrease.dll
+D:\Project\TCTE\TCTE\TCTE\bin\Newtonsoft.Json.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Net.Http.Formatting.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Helpers.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Http.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Http.WebHost.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Mvc.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Optimization.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.Razor.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.Deployment.xml
+D:\Project\TCTE\TCTE\TCTE\bin\System.Web.WebPages.Razor.xml
+D:\Project\TCTE\TCTE\TCTE\bin\Antlr3.Runtime.pdb
+D:\Project\TCTE\TCTE\TCTE\obj\Debug\TCTE.csprojResolveAssemblyReference.cache
+D:\Project\TCTE\TCTE\TCTE\obj\Debug\TCTE.dll
+D:\Project\TCTE\TCTE\TCTE\obj\Debug\TCTE.pdb
+D:\Projects\TCTE\TCTE\bin\TCTE.dll.config
+D:\Projects\TCTE\TCTE\bin\TCTE.dll
+D:\Projects\TCTE\TCTE\bin\TCTE.pdb
+D:\Projects\TCTE\TCTE\bin\Antlr3.Runtime.dll
+D:\Projects\TCTE\TCTE\bin\EntityFramework.dll
+D:\Projects\TCTE\TCTE\bin\EntityFramework.SqlServer.dll
+D:\Projects\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.dll
+D:\Projects\TCTE\TCTE\bin\Newtonsoft.Json.dll
+D:\Projects\TCTE\TCTE\bin\System.Net.Http.Formatting.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Helpers.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Http.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Http.WebHost.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Mvc.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Optimization.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.Razor.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.Deployment.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.dll
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.Razor.dll
+D:\Projects\TCTE\TCTE\bin\WebGrease.dll
+D:\Projects\TCTE\TCTE\bin\EntityFramework.xml
+D:\Projects\TCTE\TCTE\bin\EntityFramework.SqlServer.xml
+D:\Projects\TCTE\TCTE\bin\Newtonsoft.Json.xml
+D:\Projects\TCTE\TCTE\bin\System.Net.Http.Formatting.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Helpers.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Http.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Http.WebHost.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Mvc.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Optimization.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.Razor.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.Deployment.xml
+D:\Projects\TCTE\TCTE\bin\System.Web.WebPages.Razor.xml
+D:\Projects\TCTE\TCTE\bin\Antlr3.Runtime.pdb
+D:\Projects\TCTE\TCTE\obj\Debug\TCTE.dll
+D:\Projects\TCTE\TCTE\obj\Debug\TCTE.pdb
+D:\Project\TCTE\TCTE\TCTE\bin\EntityFramework.dll
+D:\Project\TCTE\TCTE\TCTE\bin\EntityFramework.SqlServer.dll
+D:\Project\TCTE\TCTE\TCTE\bin\EntityFramework.xml
+D:\Project\TCTE\TCTE\TCTE\bin\EntityFramework.SqlServer.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\obj\Debug\TCTE.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\TCTE.dll.config
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\TCTE.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\TCTE.pdb
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\Antlr3.Runtime.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\EntityFramework.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\EntityFramework.SqlServer.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\Newtonsoft.Json.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Net.Http.Formatting.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Helpers.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Http.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Http.WebHost.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Mvc.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Optimization.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Razor.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.Deployment.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.Razor.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\WebGrease.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\EntityFramework.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\EntityFramework.SqlServer.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\Newtonsoft.Json.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Net.Http.Formatting.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Helpers.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Http.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Http.WebHost.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Mvc.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Optimization.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.Razor.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.Deployment.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\System.Web.WebPages.Razor.xml
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\Antlr3.Runtime.pdb
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\obj\Debug\TCTE.pdb
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\雄\Desktop\tcet1\TCTE\TCTE\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\TCTE.dll.config
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\TCTE.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\TCTE.pdb
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\Antlr3.Runtime.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\EntityFramework.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\EntityFramework.SqlServer.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\Newtonsoft.Json.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Net.Http.Formatting.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Helpers.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Http.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Http.WebHost.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Mvc.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Optimization.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Razor.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.Deployment.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.Razor.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\WebGrease.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\EntityFramework.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\EntityFramework.SqlServer.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\Newtonsoft.Json.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Net.Http.Formatting.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Helpers.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Http.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Http.WebHost.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Mvc.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Optimization.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.Razor.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.Deployment.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\System.Web.WebPages.Razor.xml
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\Antlr3.Runtime.pdb
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\zh-Hans\EntityFramework.resources.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\obj\Debug\TCTE.dll
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\obj\Debug\TCTE.pdb
+C:\Users\雄\Desktop\TCTE Solutioin\code\TCTE\TCTE\obj\Debug\TCTE.csprojResolveAssemblyReference.cache
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\TCTE.dll.config
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\TCTE.dll
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\TCTE.pdb
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\EntityFramework.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\EntityFramework.SqlServer.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\Microsoft.Web.Infrastructure.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\Newtonsoft.Json.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Net.Http.Formatting.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Helpers.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Http.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Http.WebHost.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Mvc.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Optimization.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.Razor.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.WebPages.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.WebPages.Deployment.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\System.Web.WebPages.Razor.xml
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\Antlr3.Runtime.pdb
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\zh-Hans\EntityFramework.resources.dll
+D:\Project\TCTE\TCTE_20150705\TCTE\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Project\TCTE\TCTE_20150705\TCTE\obj\Debug\TCTE.csprojResolveAssemblyReference.cache
+D:\Project\TCTE\TCTE_20150705\TCTE\obj\Debug\TCTE.dll
+D:\Project\TCTE\TCTE_20150705\TCTE\obj\Debug\TCTE.pdb
+D:\Project\TCTE\TCTE\bin\TCTE.dll.config
+D:\Project\TCTE\TCTE\bin\TCTE.dll
+D:\Project\TCTE\TCTE\bin\TCTE.pdb
+D:\Project\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.dll
+D:\Project\TCTE\TCTE\bin\EntityFramework.xml
+D:\Project\TCTE\TCTE\bin\EntityFramework.SqlServer.xml
+D:\Project\TCTE\TCTE\bin\Microsoft.Web.Infrastructure.xml
+D:\Project\TCTE\TCTE\bin\Newtonsoft.Json.xml
+D:\Project\TCTE\TCTE\bin\System.Net.Http.Formatting.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Helpers.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Http.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Http.WebHost.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Mvc.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Optimization.xml
+D:\Project\TCTE\TCTE\bin\System.Web.Razor.xml
+D:\Project\TCTE\TCTE\bin\System.Web.WebPages.xml
+D:\Project\TCTE\TCTE\bin\System.Web.WebPages.Deployment.xml
+D:\Project\TCTE\TCTE\bin\System.Web.WebPages.Razor.xml
+D:\Project\TCTE\TCTE\bin\Antlr3.Runtime.pdb
+D:\Project\TCTE\TCTE\bin\zh-Hans\EntityFramework.resources.dll
+D:\Project\TCTE\TCTE\bin\zh-Hans\EntityFramework.SqlServer.resources.dll
+D:\Project\TCTE\TCTE\obj\Debug\TCTE.csprojResolveAssemblyReference.cache
+D:\Project\TCTE\TCTE\obj\Debug\TCTE.dll
+D:\Project\TCTE\TCTE\obj\Debug\TCTE.pdb

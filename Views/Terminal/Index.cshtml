@@ -1,0 +1,51 @@
+﻿@model IEnumerable<TCTE.Models.Terminal>
+
+@{
+    ViewBag.Title = "设备列表";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+    
+}
+
+@section ListHeader{
+    <th>
+        @Html.DisplayNameFor(model => model.Code)
+    </th>
+    <th>
+        @Html.DisplayNameFor(model => model.Status)
+    </th>
+
+    <th>
+        授权商家
+    </th>
+
+    <th>操作</th>
+}
+
+@section ListBody{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @(item.Company == null ? "无" : item.Company.Name)
+            </td>
+            <td style="white-space:nowrap">
+                @if (item.CompanyId == null)
+                {
+                    @Html.ActionLink("授权给商家", "AssignToCompany", new { id = item.Id }, new { @class = "btn btn-secondary btn-sm btn-icon icon-left" })
+                }
+                @Html.ActionLink("删除", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-sm btn-icon icon-left btn-del" })
+            </td>
+        </tr>
+    }
+}
+@section scripts{
+    <script>
+        $("#link_AddData").hide();
+    </script>
+}

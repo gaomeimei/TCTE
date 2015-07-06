@@ -1,0 +1,96 @@
+﻿@model TCTE.Models.Company
+
+@{
+    ViewBag.Title = "商家详细信息";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+<div>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Abbr)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Abbr)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstServiceDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstServiceDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+    </dl>
+</div>
+<hr />
+<p>
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" })
+    @Html.ActionLink("回到列表", "Index", null, new { @class = "btn btn-pink" })
+</p>
+
+@section styles{
+    <style>
+        .dl-horizontal > * {
+            padding: 5px 0;
+        }
+    </style>
+}

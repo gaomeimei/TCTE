@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Xenon Boostrap Admin Panel" />
+    <meta name="author" content="" />
+    <title>仟云科技后台管理系统 - @ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	@RenderSection("styles", false)
+</head>
+<body class="page-body">
+    <div class="page-container">
+        <div class="sidebar-menu toggle-others fixed">
+            <div class="sidebar-menu-inner">
+                <header class="logo-env">
+                    <!-- logo -->
+                    <div class="logo">
+                        <a href="dashboard-1.html" class="logo-expanded">
+                            <img src="/assets/images/logo@2x.png" width="80" alt="" />
+                        </a>
+                        <a href="dashboard-1.html" class="logo-collapsed">
+                            <img src="/assets/images/logo-collapsed@2x.png" width="40" alt="" />
+                        </a>
+                    </div>
+                    <!-- This will toggle the mobile menu and will be visible only on mobile devices -->
+                    <div class="mobile-menu-toggle visible-xs">
+                        <a href="#" data-toggle="user-info-menu">
+                            <i class="fa-bell-o"></i>
+                        </a>
+                        <a href="#" data-toggle="mobile-menu">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </div>
+                </header>
+                <ul id="main-menu" class="main-menu">
+                    <li>
+                        <a href="@Url.Action("Index","User")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">用户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Company")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">商家管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","SalesMan")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">业务员管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Client")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">客户管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Terminal")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">设备管理</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","Order")">
+                            <i class="linecons-cog"></i>
+                            <span class="title">订单管理</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-content">
+            <nav class="navbar user-info-navbar" role="navigation">
+                <ul class="user-info-menu left-links list-inline list-unstyled">
+                    <li class="hidden-sm hidden-xs">
+                        <a href="#" data-toggle="sidebar">
+                            <i class="fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="search-form always-visible" style="min-height: 77px; left: 130px;">
+                        <!-- You can add "always-visible" to show make the search input visible -->
+                        <form method="get" action="extra-search.html">
+                            <input type="text" name="s" class="form-control search-field" placeholder="违章查询">
+
+                            <button type="submit" class="btn btn-link">
+                                <i class="linecons-search"></i>
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+                <ul class="user-info-menu right-links list-inline list-unstyled">
+                    <li class="dropdown user-profile">
+                        <a href="#" data-toggle="dropdown">
+                            <img src="/assets/images/user-4.png" alt="user-image" class="img-circle img-inline userpic-32" width="28" />
+                            <span>
+                                Arlind Nushi
+                                <i class="fa-angle-down"></i>
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu user-profile-menu list-unstyled">
+                            <li>
+                                <a href="#edit-profile">
+                                    <i class="fa-edit"></i>
+                                    New Post
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#settings">
+                                    <i class="fa-wrench"></i>
+                                    Settings
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#profile">
+                                    <i class="fa-user"></i>
+                                    Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#help">
+                                    <i class="fa-info"></i>
+                                    Help
+                                </a>
+                            </li>
+                            <li class="last">
+                                <a href="extra-lockscreen.html">
+                                    <i class="fa-lock"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <div class="page-title">
+                <div class="title-env">
+                    <h1 class="title">@(ViewBag.Title) @RenderSection("AddDataLink", false)</h1>
+                    
+                </div>
+
+                <div class="breadcrumb-env">
+                    <ol class="breadcrumb bc-1">
+                        <li>
+                            <a href="dashboard-1.html"><i class="fa-home"></i>主页</a>
+                        </li>
+						
+                    </ol>
+
+                </div>
+
+            </div>
+            <div>
+                @RenderBody()
+            </div>
+            <footer class="main-footer sticky footer-type-1">
+                <div class="footer-inner">
+                    <div class="footer-text"> 
+                        &copy; 2015
+                        <strong>仟云网络科技</strong>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/xenon")
+	@RenderSection("scripts", false)
+</body>
+</html>
