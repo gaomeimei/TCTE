@@ -36,7 +36,7 @@ namespace TCTE.Controllers
                     regReq.AccessToken = Guid.NewGuid().ToString();                    
                     regReq.Status = RegistrationRequestStatus.Approved;
                     regReq.ApproveDate = DateTime.Now;
-                    var terminal = new Terminal { Status = TerminalStatus.NotInitialized, AccessToken = regReq.AccessToken };
+                    var terminal = new Terminal { Status = TerminalStatus.NotInitialized, AccessToken = regReq.AccessToken, CreateDate = DateTime.Now };
                     db.Terminals.Add(terminal);
                     db.SaveChanges();
                     trans.Commit();
@@ -69,6 +69,8 @@ namespace TCTE.Controllers
             }
             var terminal = db.Terminals.Find(id);
             terminal.CompanyId = CompanyId;
+            var company = db.Companies.Where(c => c.Id == CompanyId.Value).SingleOrDefault();
+            terminal.Code = string.Format("{0}{1:000}", company.Code, terminal.Id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
