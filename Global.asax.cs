@@ -26,8 +26,8 @@ namespace TCTE
         {
             using (TCTEContext db = new TCTEContext())
             {
-                Session["user"] = db.Users.Include(a => a.Role).Where(a => a.Id == 1).FirstOrDefault();
-            }
+                Session["user"] = db.Users.Include(a => a.Role).Where(a => a.Id == 2).FirstOrDefault();
+            }  
         }
     }
 }
