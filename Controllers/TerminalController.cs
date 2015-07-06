@@ -71,6 +71,7 @@ namespace TCTE.Controllers
             terminal.CompanyId = CompanyId;
             var company = db.Companies.Where(c => c.Id == CompanyId.Value).SingleOrDefault();
             terminal.Code = string.Format("{0}{1:000}", company.Code, terminal.Id);
+            //test
             db.SaveChanges();
             return RedirectToAction("Index");
         }
