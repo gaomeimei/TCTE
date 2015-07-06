@@ -163,6 +163,7 @@
     <Compile Include="Utility\EncryptHelper.cs" />
     <Compile Include="Utility\RoleHelper.cs" />
     <Compile Include="Controllers\TerminalController.cs" />
+    <Compile Include="ViewModel\LoginModel.cs" />
     <Compile Include="ViewModel\TerminalInitViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
