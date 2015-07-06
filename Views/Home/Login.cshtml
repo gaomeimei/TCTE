@@ -1,4 +1,6 @@
-﻿@{
+﻿@model TCTE.ViewModel.LoginModel
+
+@{
     Layout = null;
 }
 
@@ -12,8 +14,6 @@
     @Scripts.Render("~/bundles/jquery")
 </head>
 <body class="page-body login-page">
-
-
     <div class="login-container">
 
         <div class="row">
@@ -31,21 +31,21 @@
 
                     <div class="login-header">
                         <div class="logo">
-                            <img src="assets/images/logo@2x.png" alt="" width="80" />
+                            <img src="/assets/images/logo@2x.png" alt="" width="80" />
                             <span>后台登录</span>
                         </div>
-
-                    </div>
-
-
-                    <div class="form-group">
-                        <label class="control-label" for="username">Username</label>
-                        <input type="text" class="form-control input-dark" name="username" id="username" autocomplete="off" />
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="passwd">Password</label>
-                        <input type="password" class="form-control input-dark" name="passwd" id="passwd" autocomplete="off" />
+                        @Html.LabelFor(a => a.UserName, new { @class = "control-label" })
+                        @Html.TextBoxFor(a => a.UserName, new { @class = "form-control input-dark", autocomplete = "off" })
+                        @Html.ValidationMessageFor(a => a.UserName)
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(a => a.Password, new { @class = "control-label" })
+                        @Html.PasswordFor(a => a.Password, new { @class = "form-control input-dark", autocomplete = "off" })
+                        @Html.ValidationMessageFor(a => a.Password)
                     </div>
 
                     <div class="form-group">
@@ -57,7 +57,7 @@
 
                     <div class="login-footer">
                         <div class="info-links">
-                            <a href="javascript:;">仟云科技后台管理系统</a>
+                            仟云科技后台管理系统
                         </div>
 
                     </div>
@@ -71,6 +71,7 @@
 
     </div>
 
+    @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/xenon")
     <script>
         $(document).ready(function () {
