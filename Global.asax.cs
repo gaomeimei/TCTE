@@ -21,13 +21,5 @@ namespace TCTE
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
-
-        protected void Session_Start()
-        {
-            using (TCTEContext db = new TCTEContext())
-            {
-                Session["user"] = db.Users.Include(a => a.Role).Where(a => a.Id == 1).FirstOrDefault();
-            }  
-        }
     }
 }

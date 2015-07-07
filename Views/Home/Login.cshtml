@@ -23,12 +23,16 @@
                 <!-- Errors container -->
                 <div class="errors-container">
 
+                    @Html.ValidationSummary(true)
 
                 </div>
 
                 <!-- Add class "fade-in-effect" for login form effect -->
-                <form method="post" role="form" id="login" class="login-form fade-in-effect">
+                @using (Html.BeginForm("Login", "Home", new{ ReturnUrl = @ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "login-form fade-in-effect", id = "login", role = "form" }))
+                {
 
+
+                    @Html.AntiForgeryToken()
                     <div class="login-header">
                         <div class="logo">
                             <img src="/assets/images/logo@2x.png" alt="" width="80" />
@@ -44,7 +48,7 @@
 
                     <div class="form-group">
                         @Html.LabelFor(a => a.Password, new { @class = "control-label" })
-                        @Html.PasswordFor(a => a.Password, new { @class = "form-control input-dark", autocomplete = "off" })
+                        @Html.PasswordFor(a => a.Password, new { @class = "form-control input-dark", autocomplete = "off"@*, onpaste="return false", oncontextmenu="return false", oncopy="return false", oncut="return false"*@ })
                         @Html.ValidationMessageFor(a => a.Password)
                     </div>
 
@@ -62,7 +66,7 @@
 
                     </div>
 
-                </form>
+                }
 
 
             </div>

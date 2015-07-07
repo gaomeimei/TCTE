@@ -15,6 +15,7 @@ namespace TCTE.Models
         public int Id { get; set; }
 
         [Required, Display(Name = "设备状态")]
+        [UIHint("SystemTypeEnum")]
         public TerminalStatus Status { get; set; }
         //[Required,MaxLength(50)]
         public string AccessToken { get; set; }
@@ -23,7 +24,9 @@ namespace TCTE.Models
         public DateTime CreateDate { get; set; }
 
         // 外键属性
+        [Display(Name = "授权商家")]
         public int? CompanyId { get; set; }
+        [Display(Name = "业务员")]
         public int? SalesManId { get; set; }
 
         // 导航属性

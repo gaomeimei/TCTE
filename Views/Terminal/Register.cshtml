@@ -9,6 +9,9 @@
     <th>
         @Html.DisplayNameFor(model => model.RequestDate)
     </th>
+    <th>
+        @Html.DisplayNameFor(model => model.RegistrationToken.Category)
+    </th>
     <th>操作</th>
 }
 
@@ -18,6 +21,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.RequestDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RegistrationToken.Category)
             </td>
             <td style="white-space:nowrap">
                 @using (Html.BeginForm("Register", "Terminal", new { id = item.Id }))

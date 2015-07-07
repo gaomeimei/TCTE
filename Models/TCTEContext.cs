@@ -133,7 +133,7 @@ namespace TCTE.Models
             }
             context.SalesMen.AddRange(salesmen);
             context.SaveChanges();
-            //3.1 generate client code
+            //3.1 generate salesman code
             context.SalesMen.Include(c => c.Company).ToList().All(c =>
             {
                 c.Code = string.Format("{0}{1:000}",c.Company.Code, c.Id);
@@ -168,21 +168,21 @@ namespace TCTE.Models
             });
             context.SaveChanges();
             //5.terminals
-            var terminals = new List<Terminal>();
-            for (int i = 1; i <= 100; i++)
-            {
-                var company = companies.OrderBy(a => rand.Next()).Take(1).First();
-                terminals.Add(new Terminal { Company = company, Status = SystemType.TerminalStatus.Normal,CreateDate=DateTime.Now });
-            }
-            context.Terminals.AddRange(terminals);
-            context.SaveChanges();
+            //var terminals = new List<Terminal>();
+            //for (int i = 1; i <= 100; i++)
+            //{
+            //    var company = companies.OrderBy(a => rand.Next()).Take(1).First();
+            //    terminals.Add(new Terminal { Company = company, Status = SystemType.TerminalStatus.Normal,CreateDate=DateTime.Now });
+            //}
+            //context.Terminals.AddRange(terminals);
+            //context.SaveChanges();
             //5.1 generate client code
-            context.Terminals.Include(t => t.Company).ToList().All(t =>
-            {
-                t.Code = string.Format("{0}{1:000}", t.Company.Code, t.Id);
-                return true;
-            });
-            context.SaveChanges();
+            //context.Terminals.Include(t => t.Company).ToList().All(t =>
+            //{
+            //    t.Code = string.Format("{0}{1:000}", t.Company.Code, t.Id);
+            //    return true;
+            //});
+            //context.SaveChanges();
             //6.orders
             var orders = new List<Order>();
             for (int i = 1; i <= 1000; i++)

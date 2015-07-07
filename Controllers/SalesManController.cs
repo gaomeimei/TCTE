@@ -18,7 +18,7 @@ namespace TCTE.Controllers
         public ActionResult Index()
         {
             var user = Session["user"] as User;
-            return View(db.SalesMen.Where(a => a.CompanyId ==user.CompanyId).ToList().OrderBy(a => a.Code));
+            return View(db.SalesMen.Where(a => a.CompanyId ==user.CompanyId).OrderByDescending(s => s.Id).ToList().OrderBy(a => a.Code));
         }
 
         // GET: /SalesMan/Details/5
@@ -59,6 +59,10 @@ namespace TCTE.Controllers
             {
                 db.SalesMen.Add(salesman);
                 db.SaveChanges();
+
+                salesman.Code = string.Format("{0}{1:000}", db.Companies.Find(salesman.CompanyId).Code, salesman.Id);
+                db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 

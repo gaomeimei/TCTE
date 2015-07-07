@@ -10,7 +10,7 @@ namespace TCTE.Models
         public int Id { get; set; }
         [Required]
         public string Token { get; set; }
-        [Required]
+        [Required, Display(Name = "设备来源")]
         public string Category { get; set; }
     }
 }

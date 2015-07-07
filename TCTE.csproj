@@ -136,6 +136,7 @@
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\APIExceptionFilter.cs" />
     <Compile Include="Filters\IdentityBasicAuthenticationAttribute.cs" />
+    <Compile Include="Filters\TCTEAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1191,6 +1192,7 @@
     <Content Include="Views\Home\Login1.cshtml" />
     <Content Include="Views\Terminal\AssignToCompany.cshtml" />
     <Content Include="Views\Terminal\Register.cshtml" />
+    <Content Include="Views\Terminal\AssignToSalesMan.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -24,6 +24,6 @@ namespace TCTE.Models
         public int RegistrationTokenId { get; set; }
 
         //导航属性        
-        public RegistrationToken RegistrationToken { get; set; }
+        public virtual RegistrationToken RegistrationToken { get; set; }
     }
 }

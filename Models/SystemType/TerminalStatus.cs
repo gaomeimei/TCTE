@@ -21,11 +21,6 @@ namespace TCTE.Models.SystemType
         /// 设备故障
         /// </summary>
         [Display(Name = "故障")]
-        Malfunction = 3,
-        /// <summary>
-        /// 设备维修中
-        /// </summary>
-        [Display(Name = "维修中")]
-        Repairing = 4
+        Malfunction = 3
     }
 }

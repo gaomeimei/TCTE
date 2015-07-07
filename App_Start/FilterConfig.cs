@@ -7,6 +7,8 @@ namespace TCTE
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            //全局过滤器
+            filters.Add(new AuthorizeAttribute());
             filters.Add(new HandleErrorAttribute());
         }
     }

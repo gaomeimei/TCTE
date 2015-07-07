@@ -7,9 +7,11 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TCTE.Models;
+using TCTE.Filters;
 
 namespace TCTE.Controllers
 {
+    [SuperAdminAuthorize]
     public class CompanyController : Controller
     {
         private TCTEContext db = new TCTEContext();
@@ -22,7 +24,7 @@ namespace TCTE.Controllers
         // GET: /Company/
         public ActionResult Index()
         {
-            return View(db.Companies.ToList());
+            return View(db.Companies.OrderByDescending(c => c.Id).ToList());
         }
 
         // GET: /Company/Details/5
@@ -57,8 +59,12 @@ namespace TCTE.Controllers
         {
             if (ModelState.IsValid)
             {
+                //创建Company
                 company.CreatedDate = DateTime.Now;
                 db.Companies.Add(company);
+                db.SaveChanges();
+                //生成Company.Code
+                company.Code = string.Format("{0}{1}{2:000}", db.Cities.Find(company.CityId).Abbr, company.Abbr, company.Id);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
