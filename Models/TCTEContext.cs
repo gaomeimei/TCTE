@@ -107,7 +107,7 @@ namespace TCTE.Models
             context.Companies.AddRange(companies);
             context.SaveChanges();
             //2.1 generate company code
-            context.Companies.Include(c=>c.City).ToList().All(c=>
+            context.Companies.Include(c => c.City).ToList().All(c =>
             {
                 c.Code = string.Format("{0}{1}{2:000}", c.City.Abbr, c.Abbr, c.Id);
                 return true;
@@ -136,7 +136,7 @@ namespace TCTE.Models
             //3.1 generate salesman code
             context.SalesMen.Include(c => c.Company).ToList().All(c =>
             {
-                c.Code = string.Format("{0}{1:000}",c.Company.Code, c.Id);
+                c.Code = string.Format("{0}{1:000}", c.Company.Code, c.Id);
                 return true;
             });
             context.SaveChanges();
@@ -152,6 +152,7 @@ namespace TCTE.Models
                     Gender = SystemType.Gender.Male,
                     Name = "测试客户" + i,
                     PlateNumber = "川A000" + i,
+                    VIN = Guid.NewGuid().ToString(),
                     Source = SystemType.Source.Phone,
                     Address = "测试客户" + i + "的地址",
                     Phone = "1380000" + new Random().Next(1000, 9999),
