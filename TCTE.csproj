@@ -121,7 +121,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
-    <Folder Include="Views\Order\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
@@ -1197,6 +1196,7 @@
     <Content Include="Views\Terminal\AssignToCompany.cshtml" />
     <Content Include="Views\Terminal\Register.cshtml" />
     <Content Include="Views\Terminal\AssignToSalesMan.cshtml" />
+    <Content Include="Views\Order\GetPeccancyInfo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

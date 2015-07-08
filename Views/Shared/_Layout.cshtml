@@ -14,7 +14,7 @@
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-	@RenderSection("styles", false)
+    @RenderSection("styles", false)
 </head>
 <body class="page-body">
     <div class="page-container">
@@ -94,14 +94,13 @@
                             <i class="fa-bars"></i>
                         </a>
                     </li>
-                    <li class="search-form always-visible" style="min-height: 77px; left: 130px;">
+                    <li style="min-height: 77px; left: 0px;">
                         <!-- You can add "always-visible" to show make the search input visible -->
-                        <form method="get" action="extra-search.html">
-                            <input type="text" name="s" class="form-control search-field" placeholder="违章查询">
-
-                            <button type="submit" class="btn btn-link">
-                                <i class="linecons-search"></i>
-                            </button>
+                        <form method="post" action="@Url.Action("GetPeccancyInfo", "Order")" style="padding: 24px 20px">
+                            <label>川</label>
+                            <input type="text" id="PlateNumber" name="PlateNumber" value="@ViewBag.PlateNumber" class="form-control" style="background:#f3f3f3; display: inline-block; width:100px; vertical-align:middle" placeholder="车牌号(必填)" maxlength="8">
+                            <input type="text" id="VIN" name="VIN" value="@ViewBag.VIN" class="form-control" style="background: #f3f3f3; display: inline-block; width: 200px; vertical-align: middle" placeholder="车架号(必填)" maxlength="20">
+                            <input type="submit" id="btn_GetPeccancyInfo" class="btn btn-primary" value="违章信息查询" />
                         </form>
                     </li>
                 </ul>
@@ -152,7 +151,7 @@
             <div class="page-title">
                 <div class="title-env">
                     <h1 class="title">@(ViewBag.Title) @RenderSection("AddDataLink", false)</h1>
-                    
+
                 </div>
 
                 <div class="breadcrumb-env">
@@ -160,7 +159,7 @@
                         <li>
                             <a href="dashboard-1.html"><i class="fa-home"></i>主页</a>
                         </li>
-						
+
                     </ol>
 
                 </div>
@@ -171,7 +170,7 @@
             </div>
             <footer class="main-footer sticky footer-type-1">
                 <div class="footer-inner">
-                    <div class="footer-text"> 
+                    <div class="footer-text">
                         &copy; 2015
                         <strong>仟云网络科技</strong>
                     </div>
@@ -180,6 +179,21 @@
         </div>
     </div>
     @Scripts.Render("~/bundles/xenon")
-	@RenderSection("scripts", false)
+    <script>
+        $("#btn_GetPeccancyInfo").on("click", function () {
+            if ($("#PlateNumber").val().trim().length == 0) {
+                $("#PlateNumber").val("");
+                $("#PlateNumber").focus();
+                return false;
+            }
+            if ($("#VIN").val().trim().length == 0) {
+                $("#VIN").val("");
+                $("#VIN").focus();
+                return false;
+            }
+            return true;
+        });
+    </script>
+    @RenderSection("scripts", false)
 </body>
 </html>

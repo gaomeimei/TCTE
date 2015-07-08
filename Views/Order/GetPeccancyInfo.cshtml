@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TCTE.ViewModel.PeccancyInfo>
+@{
+    ViewBag.Title = "违章信息";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+@section styles{
+    <style>
+        dt, dd {
+            line-height: 2em;
+        }
+    </style>
+}
+
+<div class="text-right">
+    @using (Html.BeginForm("Create", "Order", FormMethod.Post))
+    {
+        <input type="hidden" name="PlateNumber" value="@("川"+ViewBag.PlateNumber)" />
+        <input type="hidden" name="VIN" value="@ViewBag.VIN" />
+        <input type="submit" value="生成订单" class="btn btn-info" />
+    }
+    @*@Html.ActionLink("生成订单", "Create", "Order", new { PlateNumber = ViewBag.PlateNumber, VIN = ViewBag.VIN }, new { @class = "btn btn-info" })*@
+</div>
+
+@foreach (var item in Model)
+{
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>@Html.DisplayNameFor(m => m.PlateNumber)</dt>
+        <dd>@Html.DisplayFor(m => item.PlateNumber)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Time)</dt>
+        <dd>@Html.DisplayFor(m => item.Time)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Address)</dt>
+        <dd>@Html.DisplayFor(m => item.Address)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Behavior)</dt>
+        <dd>@Html.DisplayFor(m => item.Behavior)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Money)</dt>
+        <dd>@Html.DisplayFor(m => item.Money)</dd>
+
+        <dt>@Html.DisplayNameFor(m => m.Deduction)</dt>
+        <dd>@Html.DisplayFor(m => item.Deduction)</dd>
+    </dl>
+}

@@ -26,6 +26,7 @@ namespace TCTE.Models
         public DbSet<Client> Clients { get; set; }
         public DbSet<Terminal> Terminals { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Function> Functions { get; set; }
         public DbSet<RegistrationRequest> RegistrationRequests { get; set; }
