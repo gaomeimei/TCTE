@@ -28,6 +28,9 @@ namespace TCTE.Models
         [Display(Name = "车牌号")]
         public string PlateNumber { get; set; }
 
+        [Required, MaxLength(20), Display(Name = "车架号")]
+        public string VIN { get; set; }
+
         [Required]
         [MaxLength(50), RegularExpression(@"1\d{10}", ErrorMessage = "联系电话必须是11位手机号码")]
         [Display(Name = "联系电话")]
