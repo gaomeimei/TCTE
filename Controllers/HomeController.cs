@@ -41,7 +41,7 @@ namespace TCTE.Controllers
                     ModelState.AddModelError("", "用户名或密码错误");
                     return View();
                 }
-                FormsAuthentication.SetAuthCookie(user.UserName, true);
+                FormsAuthentication.SetAuthCookie(user.UserName, false);
                 Session["user"] = user;
                 if(string.IsNullOrEmpty(ReturnUrl))
                     return RedirectToAction("Index");

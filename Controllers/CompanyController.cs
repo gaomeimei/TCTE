@@ -11,7 +11,6 @@ using TCTE.Filters;
 
 namespace TCTE.Controllers
 {
-    [SuperAdminAuthorize]
     public class CompanyController : Controller
     {
         private TCTEContext db = new TCTEContext();
@@ -37,7 +36,7 @@ namespace TCTE.Controllers
             Company company = db.Companies.Find(id);
             if (company == null)
             {
-                return HttpNotFound();
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
             }
             return View(company);
         }
