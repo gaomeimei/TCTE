@@ -121,6 +121,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\" />
+    <Folder Include="Views\Order\" />
     <Folder Include="Views\Shared\EditorTemplates\" />
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +132,7 @@
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\SalesManController.cs" />
     <Compile Include="Controllers\Api\TerminalController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -165,6 +167,7 @@
     <Compile Include="Utility\RoleHelper.cs" />
     <Compile Include="Controllers\TerminalController.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
+    <Compile Include="ViewModel\PeccancyInfo.cs" />
     <Compile Include="ViewModel\TerminalInitViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
