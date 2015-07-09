@@ -4,14 +4,6 @@
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-@section styles{
-    <style>
-        dt, dd {
-            line-height: 2em;
-        }
-    </style>
-}
-
 <div class="text-right">
     @using (Html.BeginForm("Create", "Order", FormMethod.Post))
     {
@@ -19,7 +11,6 @@
         <input type="hidden" name="VIN" value="@ViewBag.VIN" />
         <input type="submit" value="生成订单" class="btn btn-info" />
     }
-    @*@Html.ActionLink("生成订单", "Create", "Order", new { PlateNumber = ViewBag.PlateNumber, VIN = ViewBag.VIN }, new { @class = "btn btn-info" })*@
 </div>
 
 @foreach (var item in Model)

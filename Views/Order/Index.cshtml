@@ -1,0 +1,64 @@
+﻿@model IEnumerable<TCTE.Models.Order>
+
+@{
+    ViewBag.Title = "订单列表";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+}
+@section ListHeader{
+    <th>
+        订单编号
+    </th>
+    <th>
+        车牌号
+    </th>
+    <th>
+        客户姓名
+    </th>
+    <th>
+        客户电话
+    </th>
+    <th>
+        创建时间
+    </th>
+    <th>
+        业务员
+    </th>
+    <th>
+        状态
+    </th>
+    <th>操作</th>
+}
+
+@section ListBOdy{
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Code)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlateNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SalesMan.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td style="white-space:nowrap">
+                @Html.ActionLink("查看", "Details", new { id = item.Id }, new { @class="btn btn-info btn-sm btn-icon" })
+            </td>
+        </tr>
+    }
+}
+

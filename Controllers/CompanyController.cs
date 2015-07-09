@@ -64,6 +64,9 @@ namespace TCTE.Controllers
                 db.SaveChanges();
                 //生成Company.Code
                 company.Code = string.Format("{0}{1}{2:000}", db.Cities.Find(company.CityId).Abbr, company.Abbr, company.Id);
+                //生成CompanyAdmin
+                var user = new User { CompanyId = company.Id, CreatedDate = DateTime.Now, UserName = company.Code, Password = Utility.EncryptHelper.MD5Encrypt("666666"), RoleId = 2 };
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

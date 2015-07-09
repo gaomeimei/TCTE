@@ -1187,10 +1187,7 @@
     <Content Include="Views\SalesMan\Edit.cshtml" />
     <Content Include="Views\SalesMan\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\SystemTypeEnum.cshtml" />
-    <Content Include="Views\Terminal\Delete.cshtml" />
-    <Content Include="Views\Terminal\Details.cshtml" />
     <Content Include="Views\Terminal\Index.cshtml" />
-    <Content Include="Views\Terminal\Create.cshtml" />
     <Content Include="Views\Terminal\IndexCompanyView.cshtml" />
     <Content Include="Views\Home\Login1.cshtml" />
     <Content Include="Views\Terminal\AssignToCompany.cshtml" />
@@ -1198,6 +1195,8 @@
     <Content Include="Views\Terminal\AssignToSalesMan.cshtml" />
     <Content Include="Views\Order\GetPeccancyInfo.cshtml" />
     <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

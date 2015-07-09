@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using TCTE.Models;
 using TCTE.ViewModel;
+using System.Data.Entity;
 
 namespace TCTE.Controllers
 {
@@ -67,6 +68,21 @@ namespace TCTE.Controllers
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
+        }
+
+        //订单列表
+        public ActionResult Index()
+        {
+            var user = Session["user"] as User;
+            var orders = db.Orders.Include(o => o.SalesMan).Where(o => o.CompanyId == user.CompanyId).OrderBy(o => o.Status).ToList();
+            return View(orders);
+        }
+
+        //订单详情
+        public ActionResult Details(int id)
+        {
+            var order = db.Orders.Include(o => o.OrderDetails).Include(o => o.SalesMan).SingleOrDefault(o => o.Id == id);
+            return View(order);
         }
     }
 }

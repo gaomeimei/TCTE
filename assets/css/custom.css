@@ -4,10 +4,8 @@
  *
 */
 
-body {
-}
-
-a {
+.sidebar-menu{
+    width: 240px;
 }
 
 .field-validation-error {
@@ -42,4 +40,10 @@ a {
     line-height: 40px !important;
     color: rgba(255, 255, 255, 0.7) !important;
     padding-top: 0px; /* override the padding-top of .field-validation-error  */
+}
+
+
+/*œÍœ∏–≈œ¢“≥dt,dd*/
+.dl-horizontal dt, .dl-horizontal dd {
+    line-height: 2em;
 }

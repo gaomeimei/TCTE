@@ -1,15 +1,11 @@
 ﻿@model TCTE.Models.SalesMan
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "业务员详细信息";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<h2>Details</h2>
-
 <div>
-    <h4>SalesMan</h4>
-	<hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Company.Name)
@@ -20,11 +16,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Terminal.SerialNumber)
+            @Html.DisplayNameFor(model => model.Terminal.Code)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Terminal.SerialNumber)
+            @Html.DisplayFor(model => model.Terminal.Code)
         </dd>
 
         <dt>
@@ -80,7 +76,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsLicenced)
+            @(Model.IsLicenced ? "可以" : "不可以")
         </dd>
 
         <dt>
@@ -101,7 +97,8 @@
 
     </dl>
 </div>
+<hr />
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("编辑", "Edit", new { id = Model.Id }, new { @class = "btn btn-info" }) 
+    @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-pink" })
 </p>
