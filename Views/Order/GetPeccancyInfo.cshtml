@@ -15,7 +15,7 @@
 <div class="text-right">
     @using (Html.BeginForm("Create", "Order", FormMethod.Post))
     {
-        <input type="hidden" name="PlateNumber" value="@("川"+ViewBag.PlateNumber)" />
+        <input type="hidden" name="PlateNumber" value="@(ViewBag.PlateNumber)" />
         <input type="hidden" name="VIN" value="@ViewBag.VIN" />
         <input type="submit" value="生成订单" class="btn btn-info" />
     }

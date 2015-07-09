@@ -56,7 +56,8 @@ namespace TCTE.Models
         [Required]
         public int CompanyId { get; set; }
         public int? ClientId { get; set; }
-        public int? SalesManId { get; set; }
+        [Display(Name = "业务员")]
+        public int SalesManId { get; set; }
         public int? TerminalId { get; set; }
 
         // 导航属性
@@ -69,7 +70,7 @@ namespace TCTE.Models
         /// <summary>
         /// 订单编号规则: 商家编号 + 年 + 月 + 日 + 序列号
         /// </summary>
-        [NotMapped, Display(Name = "订单编号")]
+        [Display(Name = "订单编号")]
         public string Code { get; set; }
         
     }

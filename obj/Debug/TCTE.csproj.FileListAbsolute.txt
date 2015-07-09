@@ -198,7 +198,6 @@ D:\MyGibHub\bin\TCTE.pdb
 D:\MyGibHub\bin\Microsoft.Web.Infrastructure.dll
 D:\MyGibHub\bin\Newtonsoft.Json.dll
 D:\MyGibHub\bin\Microsoft.Web.Infrastructure.xml
-D:\MyGibHub\bin\System.Web.Mvc.xml
 D:\MyGibHub\obj\Debug\TCTE.csprojResolveAssemblyReference.cache
 D:\MyGibHub\obj\Debug\TCTE.dll
 D:\MyGibHub\obj\Debug\TCTE.pdb

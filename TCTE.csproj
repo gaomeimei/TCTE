@@ -1197,6 +1197,7 @@
     <Content Include="Views\Terminal\Register.cshtml" />
     <Content Include="Views\Terminal\AssignToSalesMan.cshtml" />
     <Content Include="Views\Order\GetPeccancyInfo.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

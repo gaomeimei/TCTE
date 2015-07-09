@@ -1,0 +1,106 @@
+﻿@model TCTE.Models.Order
+
+@{
+    ViewBag.Title = "生成订单";
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
+}
+
+@using (Html.BeginForm("CreateOK", "Order", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true)
+
+        @*<div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+
+                </div>
+            </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlateNumber, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.PlateNumber, new { @class = "form-control", @readonly="readonly" })
+                @Html.ValidationMessageFor(model => model.PlateNumber)
+            </div>
+
+            @Html.LabelFor(model => model.VIN, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.VIN, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.VIN)
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        
+            @Html.LabelFor(model => model.Phone, new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Address, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Address, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Address)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comment, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Comment, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Comment)
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.SalesManId, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("SalesManId", ((IEnumerable<SelectListItem>)ViewBag.SalesMen), "", new { @class = "form-control", id = "s2example-1", tabindex = "-1" })
+                @Html.ValidationMessageFor(model => model.SalesManId)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="生成订单" class="btn btn-success btn-block btn-lg" />
+            </div>
+        </div>
+    </div>
+}
+
+@section styles{
+    <link href="~/assets/js/select2/select2.css" rel="stylesheet" />
+    <link href="~/assets/js/select2/select2-bootstrap.css" rel="stylesheet" />
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/assets/js/select2/select2.min.js"></script>
+    <script src="~/assets/js/select2/select2_locale_zh-CN.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function ($) {
+            $("#s2example-1").select2({
+                placeholder: '请选择处理此订单的业务员...',
+                allowClear: true
+            }).on('select2-open', function () {
+                // Adding Custom Scrollbar
+                $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
+            });
+
+        });
+    </script>
+}
