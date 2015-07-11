@@ -115,33 +115,15 @@
                         </a>
                         <ul class="dropdown-menu user-profile-menu list-unstyled">
                             <li>
-                                <a href="#edit-profile">
-                                    <i class="fa-edit"></i>
-                                    New Post
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#settings">
+                                <a href="@Url.Action("ModifyPwd", "Home")">
                                     <i class="fa-wrench"></i>
-                                    Settings
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#profile">
-                                    <i class="fa-user"></i>
-                                    Profile
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#help">
-                                    <i class="fa-info"></i>
-                                    Help
+                                    修改密码
                                 </a>
                             </li>
                             <li class="last">
-                                <a href="extra-lockscreen.html">
+                                <a href="@Url.Action("LogOut", "Home")">
                                     <i class="fa-lock"></i>
-                                    Logout
+                                    注销
                                 </a>
                             </li>
                         </ul>

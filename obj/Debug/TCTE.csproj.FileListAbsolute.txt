@@ -200,4 +200,3 @@ D:\MyGibHub\bin\Newtonsoft.Json.dll
 D:\MyGibHub\bin\Microsoft.Web.Infrastructure.xml
 D:\MyGibHub\obj\Debug\TCTE.dll
 D:\MyGibHub\obj\Debug\TCTE.pdb
-D:\MyGibHub\obj\Debug\TCTE.csprojResolveAssemblyReference.cache

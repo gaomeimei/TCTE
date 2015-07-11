@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using TCTE.Filters;
 using TCTE.Models;
 using TCTE.Models.SystemType;
 using TCTE.Utility;
@@ -76,6 +77,7 @@ namespace TCTE.Controllers
             return RedirectToAction("Register");
         }
 
+        [CheckSessionState]
         public ActionResult AssignToSalesMan(int id)
         {
             var user = Session["user"] as User;
@@ -84,6 +86,7 @@ namespace TCTE.Controllers
         }
 
         [HttpPost]
+        [CheckSessionState]
         public ActionResult AssignToSalesMan(int id, int? SalesManId)
         {
             if (SalesManId == null)
@@ -102,6 +105,7 @@ namespace TCTE.Controllers
         }
 
         //设备列表
+        [CheckSessionState]
         public ActionResult Index()
         {
             if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))

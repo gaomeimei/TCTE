@@ -11,125 +11,131 @@ using TCTE.Models;
 
 namespace TCTE.Controllers
 {
-    public class SalesManController : Controller
+    public class ClientController : Controller
     {
         private TCTEContext db = new TCTEContext();
 
-        // GET: /SalesMan/
+        // GET: /Client/
         [CheckSessionState]
         public ActionResult Index()
         {
             var user = Session["user"] as User;
-            return View(db.SalesMen.Where(a => a.CompanyId ==user.CompanyId).OrderByDescending(s => s.Id).ToList().OrderBy(a => a.Code));
+            var clients = db.Clients.Where(c => c.CompanyId == user.CompanyId).OrderByDescending(c => c.Id).ToList();
+            return View(clients);
         }
 
-        // GET: /SalesMan/Details/5
+        // GET: /Client/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesMan salesman = db.SalesMen.Find(id);
-            if (salesman == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
-                return new EmptyResult(); //soshsoh
+                return HttpNotFound();
             }
-            return View(salesman);
+            return View(client);
         }
 
-        // GET: /SalesMan/Create
+        // GET: /Client/Create
         public ActionResult Create()
         {
+            ViewBag.Cities = new SelectList(db.Cities.ToList(), "Id", "Name");
+            ViewBag.Title = "添加客户";
             return View();
         }
 
-        // POST: /SalesMan/Create
+        // POST: /Client/Create
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
         [CheckSessionState]
-        public ActionResult Create(SalesMan salesman)
+        public ActionResult Create([Bind(Include="Id,Name,Gender,PlateNumber,VIN,Phone,Address,Source,Comment,CityId")] Client client)
         {
-            //测试数据
-            Session["user"] = db.Users.Find(2);
             var user = Session["user"] as User;
+            client.CompanyId = user.CompanyId.Value;
 
-            salesman.CreatedDate = DateTime.Now;
-            salesman.CompanyId = user.CompanyId.Value;
             if (ModelState.IsValid)
             {
-                db.SalesMen.Add(salesman);
+                //保存Client
+                db.Clients.Add(client);
                 db.SaveChanges();
 
-                salesman.Code = string.Format("{0}{1:000}", db.Companies.Find(salesman.CompanyId).Code, salesman.Id);
+                //生成Client.Code
+                client.Code = string.Format("{0}{1:000}", db.Companies.Find(client.CompanyId).Code, client.Id);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", salesman.CompanyId);
-            ViewBag.TerminalId = new SelectList(db.Terminals, "Id", "SerialNumber", salesman.TerminalId);
-            return View(salesman);
+            ViewBag.Cities = new SelectList(db.Cities.ToList(), "Id", "Name", client.CityId);
+            return View(client);
         }
 
-        // GET: /SalesMan/Edit/5
+        // GET: /Client/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesMan salesman = db.SalesMen.Find(id);
-            if (salesman == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View("Create", salesman);
+            ViewBag.Cities = new SelectList(db.Cities.ToList(), "Id", "Name", client.CityId);
+            ViewBag.Title = "编辑客户";
+            return View("Create", client);
         }
 
-        // POST: /SalesMan/Edit/5
+        // POST: /Client/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(SalesMan salesman)
+        [CheckSessionState]
+        public ActionResult Edit([Bind(Include="Id,Name,Gender,PlateNumber,VIN,Phone,Address,Source,Comment,CityId")] Client client)
         {
+            var user = Session["user"] as User;
+            client.CompanyId = user.CompanyId.Value;
             if (ModelState.IsValid)
             {
-                var entry = db.Entry(salesman);
+                var entry = db.Entry(client);
                 entry.State = EntityState.Modified;
-                entry.Property(a => a.CreatedDate).IsModified = false;
-                entry.Property(a => a.CompanyId).IsModified = false;
-                entry.Property(a => a.IsLicenced).IsModified = false;
+                //更新时排除Code
+                entry.Property("Code").IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(salesman);
+            ViewBag.Cities = new SelectList(db.Cities.ToList(), "Id", "Name", client.CityId);
+            return View(client);
         }
 
-        // GET: /SalesMan/Delete/5
+        // GET: /Client/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SalesMan salesman = db.SalesMen.Find(id);
-            if (salesman == null)
+            Client client = db.Clients.Find(id);
+            if (client == null)
             {
                 return HttpNotFound();
             }
-            return View(salesman);
+            return View(client);
         }
 
-        // POST: /SalesMan/Delete/5
+        // POST: /Client/Delete/5
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            SalesMan salesman = db.SalesMen.Find(id);
-            db.SalesMen.Remove(salesman);
+            Client client = db.Clients.Find(id);
+            db.Clients.Remove(client);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -141,21 +147,6 @@ namespace TCTE.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public ActionResult License(int id)
-        {
-            try
-            {
-                SalesMan salesman = db.SalesMen.Find(id);
-                salesman.IsLicenced = !salesman.IsLicenced;
-                db.SaveChanges();
-                return Json("success");
-            }
-            catch(Exception)
-            {
-                return Json("error");
-            }
         }
     }
 }

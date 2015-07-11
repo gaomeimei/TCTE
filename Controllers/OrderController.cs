@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using TCTE.Models;
 using TCTE.ViewModel;
 using System.Data.Entity;
+using TCTE.Filters;
 
 namespace TCTE.Controllers
 {
@@ -34,6 +35,7 @@ namespace TCTE.Controllers
 
         //生成订单
         [HttpPost]
+        [CheckSessionState]
         public ActionResult Create(string PlateNumber, string VIN)
         {
             var user = Session["user"] as User;
@@ -48,6 +50,7 @@ namespace TCTE.Controllers
         //生成订单
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [CheckSessionState]
         public ActionResult CreateOK([Bind(Include = "PlateNumber,VIN,Name,Phone,Address,Comment,SalesManId")]Order order)
         {
             var user = Session["user"] as User;
@@ -71,6 +74,7 @@ namespace TCTE.Controllers
         }
 
         //订单列表
+        [CheckSessionState]
         public ActionResult Index()
         {
             var user = Session["user"] as User;

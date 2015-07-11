@@ -128,14 +128,17 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="Controllers\CompanyController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Api\OrderController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\SalesManController.cs" />
     <Compile Include="Controllers\Api\TerminalController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\APIExceptionFilter.cs" />
+    <Compile Include="Filters\CheckSessionStateAttribute.cs" />
     <Compile Include="Filters\IdentityBasicAuthenticationAttribute.cs" />
     <Compile Include="Filters\TCTEAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -166,6 +169,7 @@
     <Compile Include="Utility\RoleHelper.cs" />
     <Compile Include="Controllers\TerminalController.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
+    <Compile Include="ViewModel\ModifyPwdModel.cs" />
     <Compile Include="ViewModel\PeccancyInfo.cs" />
     <Compile Include="ViewModel\TerminalInitViewModel.cs" />
   </ItemGroup>
@@ -1197,6 +1201,11 @@
     <Content Include="Views\Order\Create.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Home\ModifyPwd.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Client\Create.cshtml" />
+    <Content Include="Views\Client\Details.cshtml" />
+    <Content Include="Views\Client\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

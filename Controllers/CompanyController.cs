@@ -105,6 +105,8 @@ namespace TCTE.Controllers
                 entry.State = EntityState.Modified;
                 // Tell EF do not modify the property 'CreatedDate'
                 entry.Property("CreatedDate").IsModified = false;
+                // Tell EF do not modify the property 'Code'
+                entry.Property("Code").IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -130,7 +132,6 @@ namespace TCTE.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            System.Threading.Thread.Sleep(3000);
             try
             {
                 Company company = db.Companies.Find(id);

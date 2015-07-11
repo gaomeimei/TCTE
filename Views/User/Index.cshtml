@@ -1,0 +1,31 @@
+﻿@model IEnumerable<TCTE.Models.User>
+
+@{
+    ViewBag.Title = "用户列表";
+    Layout = "~/Views/Shared/_FormListLayout.cshtml";
+}
+
+@section ListHeader{
+    <th>用户名</th>
+    <th>角色</th>
+    <th>所属公司</th>
+    <th>创建日期</th>
+    <th>最后登录日期</th>
+    <th>额外查询次数</th>
+}
+
+@section ListBody{
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(a => item.UserName)</td>
+            <td>@Html.DisplayFor(a => item.Role.Name)</td>
+            <td>@Html.DisplayFor(a => item.Company.Name)</td>
+            <td>@Html.DisplayFor(a => item.CreatedDate)</td>
+            <td>@Html.DisplayFor(a => item.LastLoginDate)</td>
+            <td>@Html.DisplayFor(a => item.ExtraQueryCount)</td>
+        </tr>
+    }
+}
+
+
