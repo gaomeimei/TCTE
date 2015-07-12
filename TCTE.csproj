@@ -171,6 +171,7 @@
     <Compile Include="ViewModel\LoginModel.cs" />
     <Compile Include="ViewModel\ModifyPwdModel.cs" />
     <Compile Include="ViewModel\PeccancyInfo.cs" />
+    <Compile Include="ViewModel\Punishment.cs" />
     <Compile Include="ViewModel\TerminalInitViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

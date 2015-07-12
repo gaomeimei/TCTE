@@ -12,6 +12,7 @@ namespace TCTE.Models
         public static readonly int InValidRequest = 103;
         public static readonly int BadRequest = 104;
         public static readonly int InValidStatus = 105;
+        public static readonly int NotFound = 404;
         public static readonly int OK = 200;
         public static readonly int ServerError = 500;
         public int StatusCode { get; set; }
