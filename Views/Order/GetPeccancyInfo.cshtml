@@ -1,15 +1,20 @@
 ﻿@model IEnumerable<TCTE.ViewModel.PeccancyInfo>
+@using TCTE.Utility;
+
 @{
     ViewBag.Title = "违章信息";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
 <div class="text-right">
-    @using (Html.BeginForm("Create", "Order", FormMethod.Post))
+    @if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))
     {
-        <input type="hidden" name="PlateNumber" value="@(ViewBag.PlateNumber)" />
-        <input type="hidden" name="VIN" value="@ViewBag.VIN" />
-        <input type="submit" value="生成订单" class="btn btn-info" />
+        using (Html.BeginForm("Create", "Order", FormMethod.Post))
+        {
+            <input type="hidden" name="PlateNumber" value="@(ViewBag.PlateNumber)" />
+            <input type="hidden" name="VIN" value="@ViewBag.VIN" />
+            <input type="submit" value="生成订单" class="btn btn-info" />
+        }
     }
 </div>
 

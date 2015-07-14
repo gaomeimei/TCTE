@@ -1,0 +1,23 @@
+﻿@model IEnumerable<TCTE.Models.Function>
+@using System
+@using System.Collections.Generic
+
+@{
+    var icons = new Dictionary<string, string>();
+    icons.Add("设备激活", "linecons-key");
+    icons.Add("设备管理", "linecons-mobile");
+    icons.Add("用户管理", "linecons-user");
+    icons.Add("商家管理", "linecons-diamond");
+    icons.Add("业务员管理", "linecons-t-shirt");
+    icons.Add("客户管理", "linecons-star");
+    icons.Add("订单管理", "linecons-paper-plane");
+}
+@foreach (var item in Model)
+{    
+    <li>
+        <a href="@Url.Action(item.Action, item.Controller)" data-controller="@item.Controller">
+            <i class="@icons[item.Name]"></i>
+            <span class="title">@item.Name</span>
+        </a>
+    </li>
+}

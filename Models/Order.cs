@@ -18,7 +18,7 @@ namespace TCTE.Models
         [Display(Name = "车牌号")]
         public string PlateNumber { get; set; }
 
-        [Required, MaxLength(20), Display(Name = "车架号")]
+        [Required, MaxLength(50), Display(Name = "车架号")]
         public string VIN { get; set; }
 
         [Required]

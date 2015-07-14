@@ -16,6 +16,10 @@ namespace TCTE.Models
         [Display(Name = "功能描述"), MaxLength(200)]
         public string Description { get; set; }
 
+        public string Controller { get; set; }
+
+        public string Action { get; set; }
+
         // 导航属性
         public virtual ICollection<Role> Roles { get; set; }
     }

@@ -54,6 +54,7 @@ namespace TCTE.Models
         public virtual Company Company { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
 
+        [Required]
         [Display(Name = "业务员编号"), MaxLength(50)]
         public string Code { get; set; }
     }

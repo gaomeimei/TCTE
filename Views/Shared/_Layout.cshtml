@@ -23,7 +23,7 @@
                 <header class="logo-env">
                     <!-- logo -->
                     <div class="logo">
-                        <a href="dashboard-1.html" class="logo-expanded">
+                        <a href="@Url.Action("Index", "Home")" class="logo-expanded">
                             <img src="/assets/images/logo@2x.png" width="80" alt="" />
                         </a>
                         <a href="dashboard-1.html" class="logo-collapsed">
@@ -41,48 +41,9 @@
                     </div>
                 </header>
                 <ul id="main-menu" class="main-menu">
-                    <li>
-                        <a href="@Url.Action("Register","Terminal")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">设备激活</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","User")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">用户管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","Company")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">商家管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","SalesMan")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">业务员管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","Client")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">客户管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","Terminal")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">设备管理</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Index","Order")">
-                            <i class="linecons-cog"></i>
-                            <span class="title">订单管理</span>
-                        </a>
-                    </li>
+                    @{
+                        Html.RenderAction("SideBarMenu", "Home");
+                    }
                 </ul>
             </div>
         </div>
@@ -137,11 +98,10 @@
                 </div>
 
                 <div class="breadcrumb-env">
-                    <ol class="breadcrumb bc-1">
+                    <ol class="breadcrumb bc-1" id="breadcrumb">
                         <li>
-                            <a href="dashboard-1.html"><i class="fa-home"></i>主页</a>
+                            <a href="@Url.Action("Index","Home")"><i class="fa-home"></i>主页</a>
                         </li>
-
                     </ol>
 
                 </div>
@@ -163,6 +123,7 @@
     @Scripts.Render("~/bundles/xenon")
     <script>
         $(document).ready(function () {
+            //违章查询
             $("#btn_GetPeccancyInfo").on("click", function () {
                 if ($("#PlateNumber").val().trim().length == 0) {
                     $("#PlateNumber").val("");
@@ -177,8 +138,26 @@
                 $("#PlateNumber").val("川" + $("#PlateNumber").val());
                 return true;
             });
+            //面包屑
+            function findCurrentMenu() {
+                var menus = $("#main-menu li a");
+                var path = window.location.pathname;
+                var exp = /\/(\w+)\//;
+                var match = path.match(exp);
+                var a = null;
+                if (match != null) {
+                    menus.each(function (i, e) {
+                        if (match[1].toLowerCase() == $(e).attr('data-controller').toLowerCase()) {
+                            a = e;
+                        }
+                    });
+                }
+                return a;
+            }
+            var currentmenu = findCurrentMenu();
+            var breadcrumb = $("<li><a href=\"" + currentmenu.href + "\">"+currentmenu.innerText + "</a></li>&nbsp;<li class=\"active\"><strong>@ViewBag.Title</strong></li>");
+            breadcrumb.appendTo("#breadcrumb");            
         });
-        
     </script>
     @RenderSection("scripts", false)
 </body>

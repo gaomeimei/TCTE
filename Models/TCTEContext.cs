@@ -129,7 +129,8 @@ namespace TCTE.Models
                     CreatedDate = DateTime.Now,
                     IdentityCard = "50000000000000" + new Random().Next(1000, 9999),
                     IsLicenced = true,
-                    TranningDate = null
+                    TranningDate = null,
+                    Code = "待定"
                 });
             }
             context.SalesMen.AddRange(salesmen);
@@ -148,7 +149,7 @@ namespace TCTE.Models
                 var company = companies.OrderBy(a => rand.Next()).Take(1).First();
                 clients.Add(new Client
                 {
-                    Company = company,
+                    CompanyId = company.Id,
                     Comment = "无",
                     Gender = SystemType.Gender.Male,
                     Name = "测试客户" + i,
@@ -157,7 +158,7 @@ namespace TCTE.Models
                     Source = SystemType.Source.Phone,
                     Address = "测试客户" + i + "的地址",
                     Phone = "1380000" + new Random().Next(1000, 9999),
-                    City = city
+                    CityId = city.Id
                 });
             }
             context.Clients.AddRange(clients);
@@ -186,28 +187,51 @@ namespace TCTE.Models
             //});
             //context.SaveChanges();
             //6.orders
-            var orders = new List<Order>();
-            for (int i = 1; i <= 1000; i++)
-            {
-                var client = clients.OrderBy(a => rand.Next()).Take(1).First();
-                var company = companies.OrderBy(a => rand.Next()).Take(1).First();
-                orders.Add(new Order { Client = client, Comment = "无", Company = company, CreatedDate = DateTime.Now, Status = SystemType.OrderStatus.Created, StartTime = null, EndTime = null });
-            }
-            context.Orders.AddRange(orders);
-            context.SaveChanges();
-            context.Orders.Include(o => o.Company).ToList().All(o =>
-            {
-                o.Code = string.Format("{0}{1}{2:000}", o.Company.Code, DateTime.Now.ToString("yyyyMMdd"), o.Id);
-                return true;
-            });
-            context.SaveChanges();
-            //6.orders
+            //var orders = new List<Order>();
+            //for (int i = 1; i <= 1000; i++)
+            //{
+            //    var client = clients.OrderBy(a => rand.Next()).Take(1).First();
+            //    var company = companies.OrderBy(a => rand.Next()).Take(1).First();
+            //    orders.Add(new Order { Client = client, Comment = "无", Company = company, CreatedDate = DateTime.Now, Status = SystemType.OrderStatus.Created, StartTime = null, EndTime = null });
+            //}
+            //context.Orders.AddRange(orders);
+            //context.SaveChanges();
+            //context.Orders.Include(o => o.Company).ToList().All(o =>
+            //{
+            //    o.Code = string.Format("{0}{1}{2:000}", o.Company.Code, DateTime.Now.ToString("yyyyMMdd"), o.Id);
+            //    return true;
+            //});
+            //context.SaveChanges();
             //7. token
             context.RegistrationTokens.Add(new RegistrationToken()
             {
                 Token = "123",
                 Category = "dd"
             });
+            context.SaveChanges();
+            //---------------------------------[hx][20150714][新增]-----------------------------------------------------
+            //8. RegistrationRequest
+            var RegistrationRequests = new List<RegistrationRequest>();
+            for (int i = 1; i <= 20; i++)
+            {
+                RegistrationRequests.Add(new RegistrationRequest { RegistrationTokenId = 1, AccessToken = Guid.NewGuid().ToString(), ApproveDate=DateTime.Now, RefreshToken = Guid.NewGuid().ToString(), RequestDate=DateTime.Now, Status = SystemType.RegistrationRequestStatus.WaitingApprove });
+            }
+            context.RegistrationRequests.AddRange(RegistrationRequests);
+            context.SaveChanges();
+            //9. Function
+            var roles_SuperAdmin = context.Roles.Where(r => r.Name == "超级管理员").ToList();
+            var roles_CompanyAdmin = context.Roles.Where(r => r.Name == "商家管理员").ToList();
+            var roles_All = context.Roles.ToList();
+            var functions = new List<Function> { 
+                new Function{ Name="设备激活", Controller="Terminal", Action="Register", Roles= roles_SuperAdmin },
+                new Function{ Name="设备管理", Controller="Terminal", Action="Index", Roles= roles_All },
+                new Function{ Name="用户管理", Controller="User", Action="Index", Roles= roles_SuperAdmin },
+                new Function{ Name="商家管理", Controller="Company", Action="Index", Roles= roles_SuperAdmin },
+                new Function{ Name="业务员管理", Controller="SalesMan", Action="Index", Roles= roles_CompanyAdmin },
+                new Function{ Name="客户管理", Controller="Client", Action="Index", Roles= roles_CompanyAdmin },
+                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_CompanyAdmin }
+            };
+            context.Functions.AddRange(functions);
             context.SaveChanges();
         }
     }

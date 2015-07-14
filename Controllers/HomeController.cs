@@ -93,5 +93,13 @@ namespace TCTE.Controllers
             Session.Clear();
             return RedirectToAction("Login");
         }
+
+        [CheckSessionState]
+        [ChildActionOnly]
+        public ActionResult SideBarMenu()
+        {
+            var user = Session["user"] as User;
+            return PartialView(user.Role.Functions);
+        }
     }
 }
