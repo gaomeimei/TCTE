@@ -129,18 +129,27 @@
             <th>是否交费</th>
             <th>银行流水号</th>
         </tr>
-        @for (int i = 0; i < 3; i++)
+        @if (Model.OrderDetails.Count == 0)
         {
             <tr>
-                <td>5000000000@(i)</td>
-                <td>@DateTime.Now</td>
-                <td>文昌路</td>
-                <td>阻挡摩托车</td>
-                <td>500</td>
-                <td>10</td>
-                <td>是</td>
-                <td>-</td>
+                <td colspan="8">订单未完成，暂无详细信息</td>
             </tr>
+        }
+        else
+        {
+            foreach (var item in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(a => item.DecisionNumber)</td>
+                    <td>@Html.DisplayFor(a => item.PeccancyTime)</td>
+                    <td>@Html.DisplayFor(a => item.PeccancyAddress)</td>
+                    <td>@Html.DisplayFor(a => item.PeccancyBehavior)</td>
+                    <td>@Html.DisplayFor(a => item.Money)</td>
+                    <td>@Html.DisplayFor(a => item.Deduction)</td>
+                    <td>@(item.IsPay.HasValue ? (item.IsPay.Value ? "是" : "否") : "-")</td>
+                    <td>@Html.DisplayFor(a => item.BankSequenceNumber)</td>
+                </tr>
+            }
         }
     </table>
 </div>

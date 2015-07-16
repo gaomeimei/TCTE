@@ -59,7 +59,7 @@
                         <!-- You can add "always-visible" to show make the search input visible -->
                         <form method="post" action="@Url.Action("GetPeccancyInfo", "Order")" style="padding: 24px 20px">
                             <label>川</label>
-                            <input type="text" id="PlateNumber" name="PlateNumber" value="@(ViewBag.PlateNumber == null ? "" : ViewBag.PlateNumber.Substring(1))" class="form-control" style="background:#f3f3f3; display: inline-block; width:100px; vertical-align:middle" placeholder="车牌号(必填)" maxlength="8">
+                            <input type="text" id="PlateNumber" name="PlateNumber" value="@(string.IsNullOrEmpty(ViewBag.PlateNumber) ? "" : ViewBag.PlateNumber.Substring(1))" class="form-control" style="background:#f3f3f3; display: inline-block; width:100px; vertical-align:middle" placeholder="车牌号(必填)" maxlength="8">
                             <input type="text" id="VIN" name="VIN" value="@ViewBag.VIN" class="form-control" style="background: #f3f3f3; display: inline-block; width: 200px; vertical-align: middle" placeholder="车架号(必填)" maxlength="20">
                             <input type="submit" id="btn_GetPeccancyInfo" class="btn btn-primary" value="违章信息查询" />
                         </form>

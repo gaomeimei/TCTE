@@ -6,38 +6,49 @@
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<div class="text-right">
-    @if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))
-    {
-        using (Html.BeginForm("Create", "Order", FormMethod.Post))
-        {
-            <input type="hidden" name="PlateNumber" value="@(ViewBag.PlateNumber)" />
-            <input type="hidden" name="VIN" value="@ViewBag.VIN" />
-            <input type="submit" value="生成订单" class="btn btn-info" />
-        }
-    }
-</div>
-
-@foreach (var item in Model)
+@if (Model.Count() > 0)
 {
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>@Html.DisplayNameFor(m => m.PlateNumber)</dt>
-        <dd>@Html.DisplayFor(m => item.PlateNumber)</dd>
+    <div class="text-right">
+        @if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))
+        {
+            using (Html.BeginForm("Create", "Order", FormMethod.Post))
+            {
+                <input type="hidden" name="PlateNumber" value="@(ViewBag.PlateNumber)" />
+                <input type="hidden" name="VIN" value="@ViewBag.VIN" />
+                <input type="submit" value="生成订单" class="btn btn-info" />
+            }
+        }
+    </div>
 
-        <dt>@Html.DisplayNameFor(m => m.Time)</dt>
-        <dd>@Html.DisplayFor(m => item.Time)</dd>
+    <div id="peccancys">
+        @foreach (var item in Model)
+        {
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>@Html.DisplayNameFor(m => m.PlateNumber)</dt>
+                <dd>@Html.DisplayFor(m => item.PlateNumber)</dd>
 
-        <dt>@Html.DisplayNameFor(m => m.Address)</dt>
-        <dd>@Html.DisplayFor(m => item.Address)</dd>
+                <dt>@Html.DisplayNameFor(m => m.Time)</dt>
+                <dd>@Html.DisplayFor(m => item.Time)</dd>
 
-        <dt>@Html.DisplayNameFor(m => m.Behavior)</dt>
-        <dd>@Html.DisplayFor(m => item.Behavior)</dd>
+                <dt>@Html.DisplayNameFor(m => m.Address)</dt>
+                <dd>@Html.DisplayFor(m => item.Address)</dd>
 
-        <dt>@Html.DisplayNameFor(m => m.Money)</dt>
-        <dd>@Html.DisplayFor(m => item.Money)</dd>
+                <dt>@Html.DisplayNameFor(m => m.Behavior)</dt>
+                <dd>@Html.DisplayFor(m => item.Behavior)</dd>
 
-        <dt>@Html.DisplayNameFor(m => m.Deduction)</dt>
-        <dd>@Html.DisplayFor(m => item.Deduction)</dd>
-    </dl>
+                <dt>@Html.DisplayNameFor(m => m.Money)</dt>
+                <dd>@Html.DisplayFor(m => item.Money)</dd>
+
+                <dt>@Html.DisplayNameFor(m => m.Deduction)</dt>
+                <dd>@Html.DisplayFor(m => item.Deduction)</dd>
+            </dl>
+        }
+    </div>
 }
+else
+{
+    @:没有违章信息
+    <hr />
+}
+

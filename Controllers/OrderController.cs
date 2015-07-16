@@ -7,6 +7,7 @@ using TCTE.Models;
 using TCTE.ViewModel;
 using System.Data.Entity;
 using TCTE.Filters;
+using TCTE.Utility;
 
 namespace TCTE.Controllers
 {
@@ -15,21 +16,22 @@ namespace TCTE.Controllers
         private TCTEContext db = new TCTEContext();
 
         //获取违章信息
+        [CheckSessionState]
         public ActionResult GetPeccancyInfo(string PlateNumber, string VIN)
         {
-            //模拟数据
-            var peccancyInfos = new List<PeccancyInfo>
+            if(string.IsNullOrEmpty(PlateNumber) || string.IsNullOrEmpty(VIN))
             {
-                new PeccancyInfo  {   PlateNumber = "川A12568", Time = DateTime.Now, Address = "锦晖西十街", Behavior = "不按规定停车(1099)", Money = 50, Deduction=0 },
-                new PeccancyInfo  {   PlateNumber = "川A12568", Time = DateTime.Now, Address = "锦晖西十街", Behavior = "不按规定停车(1099)", Money = 50, Deduction=0 },
-                new PeccancyInfo  {   PlateNumber = "川A12568", Time = DateTime.Now, Address = "锦晖西十街", Behavior = "不按规定停车(1099)", Money = 50, Deduction=0 }
-            };
+                return RedirectToAction("Index", "Home");
+            }
 
-            //todo:PlateNumber追加"川", 拉取违章信息 
+            PlateNumber = PlateNumber.ToUpper();
+            //查违章信息
+            var peccancyInfos = PeccancyHelper.GetPeccancyInfo(PlateNumber, VIN);
 
             //回传页面
             ViewBag.PlateNumber = PlateNumber;
             ViewBag.VIN = VIN;
+
             return View(peccancyInfos);
         }
 
@@ -78,11 +80,12 @@ namespace TCTE.Controllers
         public ActionResult Index()
         {
             var user = Session["user"] as User;
-            var orders = db.Orders.Include(o => o.SalesMan).Where(o => o.CompanyId == user.CompanyId).OrderBy(o => o.Status).ToList();
+            var orders = db.Orders.Include(o => o.SalesMan).Where(o => o.CompanyId == user.CompanyId).OrderBy(o => o.Status).OrderByDescending(o => o.Id).ToList();
             return View(orders);
         }
 
         //订单详情
+        [CheckSessionState]
         public ActionResult Details(int id)
         {
             var order = db.Orders.Include(o => o.OrderDetails).Include(o => o.SalesMan).SingleOrDefault(o => o.Id == id);
