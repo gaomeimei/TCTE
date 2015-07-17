@@ -17,7 +17,7 @@ namespace TCTE.Controllers
         private TCTEContext db = new TCTEContext();
 
         // GET: /SalesMan/
-        [CheckSessionState]
+        
         public ActionResult Index()
         {
             var user = Session["user"] as User;
@@ -50,7 +50,7 @@ namespace TCTE.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CheckSessionState]
+        
         public ActionResult Create(SalesMan salesman)
         {
             //补全数据

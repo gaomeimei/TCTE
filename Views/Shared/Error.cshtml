@@ -1,17 +1,15 @@
 ﻿@{
-    Layout = null;
+    Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Error</title>
-</head>
-<body>
-    <hgroup>
-        <h1>Error.</h1>
-        <h2>An error occurred while processing your request.</h2>
-    </hgroup>
-</body>
-</html>
+@section styles{
+    <style>
+        .error {
+            color: #f00;
+        }
+    </style>
+}
+
+<hgroup>
+    <h2 class="bg-danger">系统在处理您的请求时发生了错误，请联系管理员。</h2>
+</hgroup>

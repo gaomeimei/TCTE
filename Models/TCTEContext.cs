@@ -80,12 +80,12 @@ namespace TCTE.Models
                 new Function{ Name="商家管理", Controller="Company", Action="Index", Roles= roles_SuperAdmin },
                 new Function{ Name="业务员管理", Controller="SalesMan", Action="Index", Roles= roles_CompanyAdmin },
                 new Function{ Name="客户管理", Controller="Client", Action="Index", Roles= roles_CompanyAdmin },
-                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_CompanyAdmin }
+                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_All }
             };
             context.Functions.AddRange(functions);
             context.SaveChanges();
             //5.tokens
-            //todo: 设备厂商分配token
+            //todo: 为设备厂商分配token
 
         }
     }
@@ -260,7 +260,7 @@ namespace TCTE.Models
                 new Function{ Name="商家管理", Controller="Company", Action="Index", Roles= roles_SuperAdmin },
                 new Function{ Name="业务员管理", Controller="SalesMan", Action="Index", Roles= roles_CompanyAdmin },
                 new Function{ Name="客户管理", Controller="Client", Action="Index", Roles= roles_CompanyAdmin },
-                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_CompanyAdmin }
+                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_All }
             };
             context.Functions.AddRange(functions);
             context.SaveChanges();

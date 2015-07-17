@@ -78,7 +78,7 @@ namespace TCTE.Controllers
             return RedirectToAction("Register");
         }
 
-        [CheckSessionState]
+        
         public ActionResult AssignToSalesMan(int id)
         {
             var user = Session["user"] as User;
@@ -86,8 +86,7 @@ namespace TCTE.Controllers
             return View();
         }
 
-        [HttpPost]
-        [CheckSessionState]
+        [HttpPost]        
         public ActionResult AssignToSalesMan(int id, int? SalesManId)
         {
             if (SalesManId == null)
@@ -106,7 +105,7 @@ namespace TCTE.Controllers
         }
 
         //设备列表
-        [CheckSessionState]
+        
         public ActionResult Index()
         {
             if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))

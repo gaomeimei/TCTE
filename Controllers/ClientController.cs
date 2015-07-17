@@ -17,7 +17,7 @@ namespace TCTE.Controllers
         private TCTEContext db = new TCTEContext();
 
         // GET: /Client/
-        [CheckSessionState]
+        
         public ActionResult Index()
         {
             var user = Session["user"] as User;
@@ -53,7 +53,7 @@ namespace TCTE.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CheckSessionState]
+        
         public ActionResult Create([Bind(Include="Id,Name,Gender,PlateNumber,VIN,Phone,Address,Source,Comment,CityId")] Client client)
         {
             var user = Session["user"] as User;
@@ -98,7 +98,7 @@ namespace TCTE.Controllers
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CheckSessionState]
+        
         public ActionResult Edit([Bind(Include="Id,Name,Gender,PlateNumber,VIN,Phone,Address,Source,Comment,CityId")] Client client)
         {
             var user = Session["user"] as User;

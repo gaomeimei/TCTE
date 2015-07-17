@@ -17,7 +17,7 @@ namespace TCTE.Controllers
         private TCTEContext db = new TCTEContext();
 
         //获取违章信息
-        [CheckSessionState]
+        
         public ActionResult GetPeccancyInfo(string PlateNumber, string VIN)
         {
             if(string.IsNullOrEmpty(PlateNumber) || string.IsNullOrEmpty(VIN))
@@ -38,7 +38,7 @@ namespace TCTE.Controllers
 
         //生成订单
         [HttpPost]
-        [CheckSessionState]
+        
         public ActionResult Create(string PlateNumber, string VIN)
         {
             var user = Session["user"] as User;
@@ -53,7 +53,7 @@ namespace TCTE.Controllers
         //生成订单
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [CheckSessionState]
+        
         public ActionResult CreateOK([Bind(Include = "PlateNumber,VIN,Name,Phone,Address,Comment,SalesManId")]Order order)
         {
             var user = Session["user"] as User;
@@ -77,16 +77,28 @@ namespace TCTE.Controllers
         }
 
         //订单列表
-        [CheckSessionState]
+        
         public ActionResult Index()
         {
+            var orders = db.Orders.Include(o => o.SalesMan);
             var user = Session["user"] as User;
-            var orders = db.Orders.Include(o => o.SalesMan).Where(o => o.CompanyId == user.CompanyId).OrderBy(o => o.Status).OrderByDescending(o => o.Id).ToList();
-            return View(orders);
+            if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))
+            {
+                orders = from o in orders where o.CompanyId == user.CompanyId 
+                         orderby o.Status ascending, o.Id descending 
+                         select o;
+            }
+            else if (RoleHelper.IsInRole(SystemRole.SUPER_ADMIN))
+            {
+                orders = from o in orders
+                         orderby o.Status ascending, o.Id descending
+                         select o;
+            }
+            return View(orders.ToList());
         }
 
         //订单详情
-        [CheckSessionState]
+        
         public ActionResult Details(int id)
         {
             var order = db.Orders.Include(o => o.OrderDetails).Include(o => o.SalesMan).SingleOrDefault(o => o.Id == id);
