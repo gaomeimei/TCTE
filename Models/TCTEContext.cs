@@ -95,6 +95,14 @@ namespace TCTE.Models
         protected override void Seed(TCTEContext context)
         {
             //base.Seed(context);
+            //1. create super admin
+            context.Users.Add(new User()
+            {
+                UserName = "admin",
+                Password = Utility.EncryptHelper.MD5Encrypt("4rekeyAJ"),
+                CreatedDate = DateTime.Now
+            });
+            context.SaveChanges();
             //random tool
             Random rand = new Random();
             //1.city and province and roles
