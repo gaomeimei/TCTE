@@ -94,7 +94,7 @@ namespace TCTE.Models
     {
         protected override void Seed(TCTEContext context)
         {
-            base.Seed(context);
+            //base.Seed(context);
             //random tool
             Random rand = new Random();
             //1.city and province and roles
