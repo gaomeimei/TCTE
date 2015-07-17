@@ -1168,6 +1168,7 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="PHP\DES.php" />
     <Content Include="PHP\mm14.php" />
+    <None Include="Properties\PublishProfiles\publishtcte.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

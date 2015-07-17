@@ -55,6 +55,9 @@ namespace TCTE
                 "~/assets/css/xenon-skins.css",
                 "~/assets/css/custom.css"
             ));
+
+
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
