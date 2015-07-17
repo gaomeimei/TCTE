@@ -11,6 +11,7 @@ using TCTE.Models;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class ClientController : Controller
     {
         private TCTEContext db = new TCTEContext();

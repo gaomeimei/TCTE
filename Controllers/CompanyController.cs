@@ -11,6 +11,7 @@ using TCTE.Filters;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class CompanyController : Controller
     {
         private TCTEContext db = new TCTEContext();

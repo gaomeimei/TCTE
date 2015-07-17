@@ -14,6 +14,7 @@ using TCTE.Utility;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class TerminalController : Controller
     {
         private TCTEContext db = new TCTEContext();

@@ -11,6 +11,7 @@ using TCTE.Utility;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class OrderController : Controller
     {
         private TCTEContext db = new TCTEContext();

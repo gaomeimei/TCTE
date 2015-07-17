@@ -56,6 +56,37 @@ namespace TCTE.Models
                 CreatedDate = DateTime.Now
             });
             context.SaveChanges();
+            //2.city and province and roles
+            var province = new Province() { Name = "四川", Abbr = "川" };
+            var city = new City { Name = "成都", Abbr = "CD", Provice = province };
+            context.Provinces.Add(province);
+            context.Cities.Add(city);
+            var roles = new List<Role>();
+            roles.Add(new Role { Name = "超级管理员" });
+            roles.Add(new Role { Name = "商家管理员" });
+            context.Roles.AddRange(roles);
+            context.SaveChanges();
+            //3.set the super admin role to the user named "admin"
+            context.Users.FirstOrDefault(a => a.UserName == "admin").Role = roles[0];
+            context.SaveChanges();
+            //4.Function
+            var roles_SuperAdmin = context.Roles.Where(r => r.Name == "超级管理员").ToList();
+            var roles_CompanyAdmin = context.Roles.Where(r => r.Name == "商家管理员").ToList();
+            var roles_All = context.Roles.ToList();
+            var functions = new List<Function> { 
+                new Function{ Name="设备激活", Controller="Terminal", Action="Register", Roles= roles_SuperAdmin },
+                new Function{ Name="设备管理", Controller="Terminal", Action="Index", Roles= roles_All },
+                new Function{ Name="用户管理", Controller="User", Action="Index", Roles= roles_SuperAdmin },
+                new Function{ Name="商家管理", Controller="Company", Action="Index", Roles= roles_SuperAdmin },
+                new Function{ Name="业务员管理", Controller="SalesMan", Action="Index", Roles= roles_CompanyAdmin },
+                new Function{ Name="客户管理", Controller="Client", Action="Index", Roles= roles_CompanyAdmin },
+                new Function{ Name="订单管理", Controller="Order", Action="Index", Roles= roles_CompanyAdmin }
+            };
+            context.Functions.AddRange(functions);
+            context.SaveChanges();
+            //5.tokens
+            //todo: 设备厂商分配token
+
         }
     }
 

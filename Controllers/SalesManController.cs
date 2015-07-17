@@ -11,6 +11,7 @@ using TCTE.Models;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class SalesManController : Controller
     {
         private TCTEContext db = new TCTEContext();
@@ -52,10 +53,8 @@ namespace TCTE.Controllers
         [CheckSessionState]
         public ActionResult Create(SalesMan salesman)
         {
-            //测试数据
-            Session["user"] = db.Users.Find(2);
+            //补全数据
             var user = Session["user"] as User;
-
             salesman.CreatedDate = DateTime.Now;
             salesman.CompanyId = user.CompanyId.Value;
             if (ModelState.IsValid)
@@ -63,14 +62,12 @@ namespace TCTE.Controllers
                 db.SalesMen.Add(salesman);
                 db.SaveChanges();
 
-                salesman.Code = string.Format("{0}{1:000}", db.Companies.Find(salesman.CompanyId).Code, salesman.Id);
-                db.SaveChanges();
+                //salesman.Code = string.Format("{0}{1:000}", db.Companies.Find(salesman.CompanyId).Code, salesman.Id);
+                //db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CompanyId = new SelectList(db.Companies, "Id", "Name", salesman.CompanyId);
-            ViewBag.TerminalId = new SelectList(db.Terminals, "Id", "SerialNumber", salesman.TerminalId);
             return View(salesman);
         }
 
@@ -100,9 +97,11 @@ namespace TCTE.Controllers
             {
                 var entry = db.Entry(salesman);
                 entry.State = EntityState.Modified;
+                //排除以下字段更改:
                 entry.Property(a => a.CreatedDate).IsModified = false;
                 entry.Property(a => a.CompanyId).IsModified = false;
                 entry.Property(a => a.IsLicenced).IsModified = false;
+                entry.Property(a => a.TerminalId).IsModified = false;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

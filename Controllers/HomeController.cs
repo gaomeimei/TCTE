@@ -13,7 +13,7 @@ namespace TCTE.Controllers
 {
     public class HomeController : Controller
     {
-
+        [CheckSessionState]
         public ActionResult Index()
         {
             return View();

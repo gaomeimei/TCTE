@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using TCTE.Models;
 using System.Data.Entity;
+using TCTE.Filters;
 
 namespace TCTE.Controllers
 {
+    [CheckSessionState]
     public class UserController : Controller
     {
         //

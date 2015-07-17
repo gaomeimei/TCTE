@@ -40,29 +40,37 @@ namespace TCTE.Utility
             {
                 PlateNumber = PlateNumber.Substring(1);
             }
+
             string json = RequestPeccancyJson(PlateNumber, VIN);
             List<PeccancyInfo> list = new List<PeccancyInfo>();
-            JObject obj = JObject.Parse(json);
 
-            if (Convert.ToString(obj["state"]) == "0") 
+            try
             {
-                var datazt = Convert.ToString(obj["datazt"]);
-                if (datazt == "1")
+                JObject obj = JObject.Parse(json);
+                if (Convert.ToString(obj["state"]) == "0")
                 {
-                    var illegal = (from o in obj["data"][0]["illegal"] select o).ToList();
-                    foreach (var item in illegal)
+                    var datazt = Convert.ToString(obj["datazt"]);
+                    if (datazt == "1")
                     {
-                        list.Add(new PeccancyInfo
+                        var illegal = (from o in obj["data"][0]["illegal"] select o).ToList();
+                        foreach (var item in illegal)
                         {
-                            PlateNumber = PlateNumber,
-                            Time = Convert.ToDateTime(item["wfsj"].ToString()),
-                            Address = Convert.ToString(item["wfdz"].ToString()),
-                            Behavior = Convert.ToString(item["wfxw"].ToString()),
-                            Money = Convert.ToDecimal(item["fkje"].ToString()),
-                            Deduction = Convert.ToInt32(item["jf"].ToString())
-                        });
-                    }                    
+                            list.Add(new PeccancyInfo
+                            {
+                                PlateNumber = PlateNumber,
+                                Time = Convert.ToDateTime(item["wfsj"].ToString()),
+                                Address = Convert.ToString(item["wfdz"].ToString()),
+                                Behavior = Convert.ToString(item["wfxw"].ToString()),
+                                Money = Convert.ToDecimal(item["fkje"].ToString()),
+                                Deduction = Convert.ToInt32(item["jf"].ToString())
+                            });
+                        }
+                    }
                 }
+            }
+            catch(Exception)
+            {
+
             }
 
             return list;
