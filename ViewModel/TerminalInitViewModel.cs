@@ -8,8 +8,6 @@ namespace TCTE.ViewModel
     public class TerminalInitViewModel
     {
         [Required]
-        public string AccessToken { get; set; }
-        [Required]
         public string SalesManCode { get; set; }
         [Required]
         public string FingerPrint { get; set; }

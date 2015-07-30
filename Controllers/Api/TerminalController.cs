@@ -47,7 +47,7 @@ namespace TCTE.Controllers.Api
                     }
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.Unauthorized, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.UnAuthorized,
                 Description = "请提供正确的授权代码",
@@ -92,7 +92,7 @@ namespace TCTE.Controllers.Api
                     }
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.Unauthorized, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.UnAuthorized,
                 Description = "请提供正确的授权代码",
@@ -103,14 +103,13 @@ namespace TCTE.Controllers.Api
         /// Device init request
         /// </summary>
         /// <returns></returns>
-        [IdentityBasicAuthentication(false)]
         [HttpPost]
         [Route("api/Terminal/Init")]
         public HttpResponseMessage Init([FromBodyAttribute] TerminalInitViewModel model)
         {
             if (ModelState.IsValid)
             {
-                string accessToken = model.AccessToken;
+                string accessToken = GetToken();
                 using (var context = new TCTEContext())
                 {
                     var ternimal = context.Terminals.Where(t => t.Status == Models.SystemType.TerminalStatus.NotInitialized && t.AccessToken == accessToken).SingleOrDefault();
@@ -134,7 +133,7 @@ namespace TCTE.Controllers.Api
                             });
                         }
                     }
-                    return Request.CreateResponse(HttpStatusCode.Unauthorized, new APIResultObject()
+                    return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                        {
                            StatusCode = APIResultObject.BadRequest,
                            Description = "设备或者业务人员不存在或处于绑定状态",
@@ -142,7 +141,7 @@ namespace TCTE.Controllers.Api
                        });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.Unauthorized, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.InValidRequest,
                 Description = "请提供正确参数格式，以及完整参数",
@@ -154,11 +153,11 @@ namespace TCTE.Controllers.Api
         /// </summary>
         /// <param name="accessToken"></param>
         /// <returns></returns>
-        [IdentityBasicAuthentication(false)]
         [HttpGet]
-        [Route("api/Terminal/Status/{accessToken}")]
-        public HttpResponseMessage GetStatus(string accessToken)
+        [Route("api/Terminal/Status")]
+        public HttpResponseMessage GetStatus()
         {
+            string accessToken = GetToken();
             if (!string.IsNullOrEmpty(accessToken))
             {
                 using (var context = new TCTEContext())
@@ -172,7 +171,7 @@ namespace TCTE.Controllers.Api
                     });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.Unauthorized, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.InValidRequest,
                 Description = "请提供正确参数格式，以及完整参数",

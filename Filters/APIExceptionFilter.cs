@@ -12,7 +12,7 @@ namespace TCTE.Filters
     {
         public override void OnException(HttpActionExecutedContext actionExecutedContext)
         {
-            actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.BadRequest,
+            actionExecutedContext.Response = actionExecutedContext.Request.CreateResponse(HttpStatusCode.OK,
                    new APIResultObject()
                    {
                        StatusCode = APIResultObject.ServerError,

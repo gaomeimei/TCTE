@@ -62,7 +62,7 @@ namespace TCTE.Controllers.Api
                     });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.NotFound,
                 Description = "success",
@@ -90,7 +90,7 @@ namespace TCTE.Controllers.Api
                     });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.NotFound,
                 Description = "没有找到请求的订单编号",
@@ -126,7 +126,7 @@ namespace TCTE.Controllers.Api
                     });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.NotFound,
                 Description = "没有找到请求的订单编号",
@@ -136,7 +136,7 @@ namespace TCTE.Controllers.Api
         }
 
         [HttpPost]
-        [Route("api/orders/decision")]
+        [Route("api/orders/pay")]
         public HttpResponseMessage Pay(string decisionNumber, string bankTransactionNumber)
         {
             string token = GetToken();
@@ -156,7 +156,7 @@ namespace TCTE.Controllers.Api
                     });
                 }
             }
-            return Request.CreateResponse(HttpStatusCode.NotFound, new APIResultObject()
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.NotFound,
                 Description = "没有找到请求的决定书编号",
