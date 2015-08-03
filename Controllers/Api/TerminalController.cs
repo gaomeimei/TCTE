@@ -103,13 +103,14 @@ namespace TCTE.Controllers.Api
         /// Device init request
         /// </summary>
         /// <returns></returns>
+        [IdentityBasicAuthentication(false)]
         [HttpPost]
         [Route("api/Terminal/Init")]
         public HttpResponseMessage Init([FromBodyAttribute] TerminalInitViewModel model)
         {
             if (ModelState.IsValid)
             {
-                string accessToken = GetToken();
+                string accessToken = model.AccessToken;
                 using (var context = new TCTEContext())
                 {
                     var ternimal = context.Terminals.Where(t => t.Status == Models.SystemType.TerminalStatus.NotInitialized && t.AccessToken == accessToken).SingleOrDefault();

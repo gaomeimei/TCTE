@@ -92,9 +92,9 @@ namespace TCTE.Filters
                 authHeader = auth.Parameter;
             }
             //get api key from query string
-            if (string.IsNullOrEmpty(authHeader) && actionContext.Request.GetQueryNameValuePairs().Where(k => k.Key.ToUpper() == "APIKEY").Count() > 0)
+            if (string.IsNullOrEmpty(authHeader) && actionContext.Request.GetQueryNameValuePairs().Where(k => k.Key.ToUpper() == "TOKEN").Count() > 0)
             {
-                authHeader = "token=" + actionContext.Request.GetQueryNameValuePairs().Where(k => k.Key.ToUpper() == "APIKEY").Select(k => k.Value).SingleOrDefault();
+                authHeader = "token=" + actionContext.Request.GetQueryNameValuePairs().Where(k => k.Key.ToUpper() == "TOKEN").Select(k => k.Value).SingleOrDefault();
             }
             string token = "";
             //check header format
@@ -113,10 +113,10 @@ namespace TCTE.Filters
                         else
                         {
                             //invalid status
-                            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized,
+                            actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.OK,
                                  new APIResultObject
                                  {
-                                     StatusCode = APIResultObject.OK,
+                                     StatusCode = APIResultObject.UnAuthorized,
                                      Description = "设备状态异常，请求无效！",
                                      Result = null
                                  }
@@ -129,10 +129,10 @@ namespace TCTE.Filters
             else
             {
                 //no token
-                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.Unauthorized,
+                actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.OK,
                     new APIResultObject
                     {
-                        StatusCode = APIResultObject.OK,
+                        StatusCode = APIResultObject.UnAuthorized,
                         Description = "请提供授权代码！",
                         Result = null
                     }
