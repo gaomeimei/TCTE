@@ -45,7 +45,7 @@
                     <input type="text" id="txt-confirm-del" class="form-control" />
                 </div>
                 <div class="alert alert-danger" id="msg-del-failure" style="display:none">
-                    <strong>删除失败！</strong> 请联系系统管理员。
+                    <strong>删除失败！</strong> 原因：@RenderSection("DeleleteFailureReason", false)。
                 </div>
             </div>
 

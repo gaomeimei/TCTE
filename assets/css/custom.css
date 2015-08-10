@@ -51,3 +51,12 @@
 #data_table form{
     display:inline-block;
 }
+
+/*必填项前面加星号*/
+label.required:before{
+    content: "*";
+    display: inline-block;
+    color: red;
+    margin-right: 3px;
+    vertical-align: middle;
+}
