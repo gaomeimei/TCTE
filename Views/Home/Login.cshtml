@@ -9,9 +9,15 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>成都迪吉台管理系统 - 后台登录</title>
+    <title>成都迪吉后台管理系统 - 后台登录</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/jquery")
+    <style>
+        .login-page .login-form .form-group .control-label{
+            position: static;
+            padding: 0px;
+        }
+    </style>
 </head>
 <body class="page-body login-page">
     <div class="login-container">
@@ -75,8 +81,21 @@
 
     </div>
 
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/xenon")
+    @*@Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/xenon")*@
+
+    <script src="/Scripts/jquery.validate.min.js"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/TweenMax.min.js"></script>
+    <script src="/assets/js/resizeable.js"></script>
+    <script src="/assets/js/joinable.js"></script>
+    <script src="/assets/js/xenon-api.js"></script>
+    <script src="/assets/js/xenon-toggles.js"></script>
+    @*<script src="/assets/js/xenon-custom.js"></script>*@
+
+
     <script>
         $(document).ready(function () {
             setTimeout(function () { $(".fade-in-effect").addClass('in'); }, 1);

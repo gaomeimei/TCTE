@@ -18,6 +18,7 @@
     <th class="sorting">
         @Html.DisplayNameFor(model => model.OrderCount)
     </th>
+    <th>归属地</th>
     <th class="sorting">
         @Html.DisplayNameFor(model => model.CreatedDate)
     </th>
@@ -41,10 +42,13 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstServiceDate)
+                @(item.FirstServiceDate.HasValue ? item.FirstServiceDate.Value.ToString("yyyy-MM-dd") : "暂无服务")
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderCount)
+            </td>
+            <td>
+                @item.City.Name
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDate)
@@ -64,4 +68,6 @@
     }
 }
 
-
+@section DeleleteFailureReason{
+    该商家拥有1个以上的设备或订单，为保证数据准确性，不允许删除此商家
+}

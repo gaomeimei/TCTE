@@ -21,7 +21,7 @@ namespace TCTE.Controllers
         public ActionResult Index()
         {
             var user = Session["user"] as User;
-            return View(db.SalesMen.Where(a => a.CompanyId ==user.CompanyId).OrderByDescending(s => s.Id).ToList().OrderBy(a => a.Code));
+            return View(db.SalesMen.Where(a => a.CompanyId ==user.CompanyId).OrderByDescending(s => s.Id).ToList());
         }
 
         // GET: /SalesMan/Details/5

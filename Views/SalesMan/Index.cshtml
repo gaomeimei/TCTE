@@ -6,19 +6,19 @@
 }
 
 @section ListHeader{
-    <th class="sorting_asc">
+    <th>
         @Html.DisplayNameFor(model => model.Code)
     </th>
-    <th class="sorting">
+    <th>
         @Html.DisplayNameFor(model => model.Name)
     </th>
-    <th class="sorting">
+    <th>
         @Html.DisplayNameFor(model => model.Gender)
     </th>
-    <th class="sorting">
+    <th>
         @Html.DisplayNameFor(model => model.IdentityCard)
     </th>
-    <th class="sorting">
+    <th>
         @Html.DisplayNameFor(model => model.Phone)
     </th>
     @*<th class="sorting">
@@ -58,9 +58,12 @@
     }
 }
 
+@section DeleleteFailureReason{
+    该业务员处理了1个以上的订单，为保证数据准确性，不允许删除此业务员
+}
 
 @section scripts{
-    <script src="~/assets/js/toastr/toastr.min.js"></script>
+    @*<script src="~/assets/js/toastr/toastr.min.js"></script>
     <script>
         // 异步修改状态: 是否上岗
         $(".chkLicense").on("click", function () {
@@ -72,5 +75,5 @@
                 }
             });
         });
-    </script>
+    </script>*@
 }

@@ -36,7 +36,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FirstServiceDate)
+            @(Model.FirstServiceDate.HasValue ? Model.FirstServiceDate.Value.ToString("yyyy-MM-dd") : "暂无服务")
         </dd>
 
         <dt>

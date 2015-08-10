@@ -71,6 +71,14 @@ namespace TCTE.Controllers
                 db.SaveChanges();
                 //生成订单Code
                 order.Code = string.Format("{0:yyyyMMdd}{1}", order.CreatedDate, order.Id);
+                //更新商家服务次数
+                var company = db.Companies.Find(user.CompanyId.Value);
+                company.OrderCount += 1;
+                //更新商家首次服务时间
+                if(company.OrderCount == 1)
+                {
+                    company.FirstServiceDate = order.CreatedDate;
+                }
                 db.SaveChanges();
             }
             return RedirectToAction("Index");
