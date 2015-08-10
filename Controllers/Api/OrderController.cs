@@ -27,11 +27,13 @@ namespace TCTE.Controllers.Api
                     .Where(o => o.Terminal.AccessToken == token && o.Status != Models.SystemType.OrderStatus.Ended).Select(o => new
                     {
                         OrderId = o.Id,
+                        OrderCode = o.Code,
                         CreateTime = o.CreatedDate,
                         ClientName = o.Name,
                         ClientPhone = o.Phone,
                         ClientAddress = o.Address,
-                        PlateNumber = o.PlateNumber
+                        PlateNumber = o.PlateNumber,
+                        State = o.Status
                     }).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                 {

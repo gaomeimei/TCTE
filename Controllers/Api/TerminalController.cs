@@ -113,39 +113,62 @@ namespace TCTE.Controllers.Api
                 string accessToken = model.AccessToken;
                 using (var context = new TCTEContext())
                 {
-                    var ternimal = context.Terminals.Where(t => t.Status == Models.SystemType.TerminalStatus.NotInitialized && t.AccessToken == accessToken).SingleOrDefault();
-
-                    if (ternimal != null)
+                    var terminal = context.Terminals.Where(t =>t.AccessToken == accessToken).SingleOrDefault();
+                    if (terminal == null)
                     {
-                        var salesMan = context.SalesMen.Where(s => s.Code == model.SalesManCode && s.CompanyId == ternimal.CompanyId && !s.TerminalId.HasValue && s.IsLicenced).SingleOrDefault();
-                        if (salesMan != null)
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                         {
-                            salesMan.TerminalId = ternimal.Id;
-                            ternimal.SalesManId = salesMan.Id;
-                            ternimal.FingerPrint = model.FingerPrint;
-                            ternimal.LastInitialDate = DateTime.Now;
-                            ternimal.Status = Models.SystemType.TerminalStatus.Normal;
-                            context.SaveChanges();
-                            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
-                            {
-                                StatusCode = APIResultObject.OK,
-                                Description = "success",
-                                Result = ""
-                            });
-                        }
+                            StatusCode = APIResultObject.InvalidToken,
+                            Description = "授权码错误",
+                            Result = ""
+                        });
                     }
+                    if (terminal.Status != Models.SystemType.TerminalStatus.NotInitialized)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InValidStatus,
+                            Description = "设备状态异常，不能进行员工绑定",
+                            Result = ""
+                        });
+                    }
+                    var salesMan = context.SalesMen.Where(s => s.Code.ToLower() == model.SalesManCode.ToLower() && s.CompanyId == terminal.CompanyId).SingleOrDefault();
+                    if (salesMan == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidCode,
+                            Description = "员工编码错误",
+                            Result = ""
+                        });
+                    }
+                    if (salesMan.TerminalId > 0)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidBinding,
+                            Description = "员工已经绑定终端",
+                            Result = ""
+                        });
+                    }
+                    salesMan.TerminalId = terminal.Id;
+                    terminal.SalesManId = salesMan.Id;
+                    terminal.FingerPrint = model.FingerPrint;
+                    terminal.LastInitialDate = DateTime.Now;
+                    terminal.Status = Models.SystemType.TerminalStatus.Normal;
+                    context.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
-                       {
-                           StatusCode = APIResultObject.BadRequest,
-                           Description = "设备或者业务人员不存在或处于绑定状态",
-                           Result = ""
-                       });
+                    {
+                        StatusCode = APIResultObject.OK,
+                        Description = "success",
+                        Result = ""
+                    });
                 }
             }
             return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
             {
                 StatusCode = APIResultObject.InValidRequest,
-                Description = "请提供正确参数格式，以及完整参数",
+                Description = "请提供完整参数",
                 Result = ""
             });
         }
@@ -159,25 +182,16 @@ namespace TCTE.Controllers.Api
         public HttpResponseMessage GetStatus()
         {
             string accessToken = GetToken();
-            if (!string.IsNullOrEmpty(accessToken))
+            using (var context = new TCTEContext())
             {
-                using (var context = new TCTEContext())
+                var ternimal = context.Terminals.Where(t => t.AccessToken == accessToken).SingleOrDefault();
+                return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                 {
-                    var ternimal = context.Terminals.Where(t => t.AccessToken == accessToken).SingleOrDefault();
-                    return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
-                    {
-                        StatusCode = APIResultObject.OK,
-                        Description = "success",
-                        Result = ternimal.Status.ToString()
-                    });
-                }
+                    StatusCode = APIResultObject.OK,
+                    Description = "success",
+                    Result = ternimal.Status.ToString()
+                });
             }
-            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
-            {
-                StatusCode = APIResultObject.InValidRequest,
-                Description = "请提供正确参数格式，以及完整参数",
-                Result = ""
-            });
         }
         [HttpPost]
         [Route("api/Terminal/Verify")]

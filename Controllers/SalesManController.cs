@@ -129,6 +129,13 @@ namespace TCTE.Controllers
         {
             SalesMan salesman = db.SalesMen.Find(id);
             db.SalesMen.Remove(salesman);
+            //移除设备绑定
+            var terminal = db.Terminals.Where(t => t.SalesManId == id).SingleOrDefault();
+            if (terminal != null)
+            {
+                terminal.SalesManId = 0;
+                terminal.Status = Models.SystemType.TerminalStatus.NotInitialized;
+            }
             db.SaveChanges();
             return RedirectToAction("Index");
         }

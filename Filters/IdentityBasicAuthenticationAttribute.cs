@@ -116,9 +116,9 @@ namespace TCTE.Filters
                             actionContext.Response = actionContext.Request.CreateResponse(HttpStatusCode.OK,
                                  new APIResultObject
                                  {
-                                     StatusCode = APIResultObject.UnAuthorized,
+                                     StatusCode = APIResultObject.InValidStatus,
                                      Description = "设备状态异常，请求无效！",
-                                     Result = null
+                                     Result = ternimal.Status
                                  }
                              );
                         }

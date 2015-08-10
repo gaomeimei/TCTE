@@ -31,6 +31,12 @@
                     @Html.AntiForgeryToken()
                     <input type="submit" value="通过审核" class="btn btn-secondary btn-sm btn-icon icon-left" />
                 }
+
+                @using (Html.BeginForm("DeleteRegister", "Terminal", new { id = item.Id }))
+                {
+                    @Html.AntiForgeryToken()
+                    <input type="submit" value="删除" class="btn btn-danger btn-sm btn-icon icon-left btn-del" />
+                }
             </td>
         </tr>
     }
@@ -38,6 +44,7 @@
 
 @section scripts{
     <script>
+        //order = [[0,"asc"]];
         $("#link_AddData").hide();
     </script>
 }

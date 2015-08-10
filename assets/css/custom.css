@@ -47,3 +47,7 @@
 .dl-horizontal dt, .dl-horizontal dd {
     line-height: 2em;
 }
+
+#data_table form{
+    display:inline-block;
+}

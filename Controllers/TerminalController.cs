@@ -22,7 +22,17 @@ namespace TCTE.Controllers
         //查看激活请求
         public ActionResult Register()
         {
-            return View(db.RegistrationRequests.Where(a => a.Status == RegistrationRequestStatus.WaitingApprove).OrderByDescending(a => a.Id).ToList());
+            return View(db.RegistrationRequests.Where(a => a.Status == RegistrationRequestStatus.WaitingApprove ).OrderByDescending(a => a.Id).ToList().Where(r=>r.RequestDate >= DateTime.Now.AddMinutes(-10)));
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteRegister(int id)
+        {
+            //delete request
+            var request = db.RegistrationRequests.Find(id);
+            db.RegistrationRequests.Remove(request);
+            db.SaveChanges();
+            return Redirect("/Terminal/Register");
         }
 
         //激设备

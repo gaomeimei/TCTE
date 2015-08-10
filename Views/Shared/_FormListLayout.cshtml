@@ -7,6 +7,7 @@
     @RenderSection("styles", false)
 }
 
+
 @section AddDataLink{
     <a id="link_AddData" href="@Url.Action("Create")" data-toggle="tooltip" data-placement="right" title="" data-original-title="添加数据请点击这里"><i class="glyphicon glyphicon-plus"></i></a>
 }
@@ -64,11 +65,13 @@
     @Scripts.Render("~/bundles/datatable")
     <script type="text/javascript">
         var table; //DataTable对象
+        var order = [];
         jQuery(document).ready(function ($) {
-            table = $("#data_table").DataTable({
+            var options = {
                 aLengthMenu: [
                     [10, 25, 50, 100, -1], [10, 25, 50, 100, "显示所有"]
                 ],
+                "order":order,
                 "oLanguage": {
                     "sSearch": "搜索",
                     "sLengthMenu": "每页显示 _MENU_ 条记录",
@@ -84,7 +87,8 @@
                     },
                     "sZeroRecords": "没有检索到数据"
                 }
-            });
+            };
+            table = $("#data_table").DataTable(options);
             // 把modal置入body下
             $("#modal-del").appendTo("body");
             $("#modal-loading").appendTo("body");

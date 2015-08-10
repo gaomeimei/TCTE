@@ -43,7 +43,7 @@ namespace TCTE.Controllers
         {
             var user = Session["user"] as User;
             //处于上岗状态且和终端绑定的业务员
-            var salesMen = db.SalesMen.Where(s => s.CompanyId == user.CompanyId && s.IsLicenced && s.TerminalId != null).ToList();
+            var salesMen = db.SalesMen.Where(s => s.CompanyId == user.CompanyId  && s.TerminalId != null).ToList();
             ViewBag.SalesMen = new SelectList(salesMen, "Id", "Name");
             //回传页面
             ViewBag.PlateNumber = PlateNumber;

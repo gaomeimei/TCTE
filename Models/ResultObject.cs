@@ -10,8 +10,10 @@ namespace TCTE.Models
         public static readonly int UnAuthorized = 101;
         public static readonly int WaittingApproved = 102;
         public static readonly int InValidRequest = 103;
-        public static readonly int BadRequest = 104;
+        public static readonly int InvalidToken = 104;
         public static readonly int InValidStatus = 105;
+        public static readonly int InvalidCode = 106;
+        public static readonly int InvalidBinding = 107;
         public static readonly int NotFound = 404;
         public static readonly int OK = 200;
         public static readonly int ServerError = 500;
