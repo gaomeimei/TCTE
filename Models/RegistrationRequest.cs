@@ -13,7 +13,7 @@ namespace TCTE.Models
         public string RefreshToken { get; set; }
         [Required, Display(Name = "请求状态")]
         public RegistrationRequestStatus Status { get; set; }
-        [Required, Display(Name = "请求日期")]
+        [Required, Display(Name = "请求日期"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime RequestDate { get; set; }
 
         public Nullable<DateTime> ApproveDate { get; set; }
