@@ -150,6 +150,7 @@
     <Compile Include="Models\Function.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\OrderImage.cs" />
     <Compile Include="Models\Province.cs" />
     <Compile Include="Models\RegistrationRequest.cs" />
     <Compile Include="Models\RegistrationToken.cs" />

@@ -14,5 +14,6 @@ namespace TCTE.ViewModel
         public int Deduction { get; set; }
         public decimal? Money { get; set; }
         public string OrderCode { get; set; }
+        public string[] Images { get; set; }
     }
 }

@@ -31,6 +31,7 @@ namespace TCTE.Models
         public DbSet<Function> Functions { get; set; }
         public DbSet<RegistrationRequest> RegistrationRequests { get; set; }
         public DbSet<RegistrationToken> RegistrationTokens { get; set; }
+        public DbSet<OrderImage> OrderImages { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

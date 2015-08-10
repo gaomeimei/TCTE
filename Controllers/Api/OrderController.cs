@@ -107,9 +107,10 @@ namespace TCTE.Controllers.Api
             string token = GetToken();
             using (var db = new TCTEContext())
             {
-                var order = db.Orders.Where(o => o.Code == punish.OrderCode && o.Terminal.AccessToken == token).SingleOrDefault();
+                var order = db.Orders.Where(o => o.Code.ToLower() == punish.OrderCode.ToLower() && o.Terminal.AccessToken == token).SingleOrDefault();
                 if (order != null)
                 {
+
                     order.OrderDetails.Add(new OrderDetail()
                     {
                         DecisionNumber = punish.DecisionNumber,
@@ -119,6 +120,17 @@ namespace TCTE.Controllers.Api
                         PeccancyTime = punish.PeccancyTime,
                         Money = punish.Money
                     });
+                    if (punish.Images != null && punish.Images.Length > 0)
+                    {
+                        foreach (var image in punish.Images)
+                        {
+                            db.OrderImages.Add(new OrderImage()
+                            {
+                                DecisionNumber = punish.DecisionNumber,
+                                ImageContent = image
+                            });
+                        }
+                    }
                     db.SaveChanges();
                     return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                     {
