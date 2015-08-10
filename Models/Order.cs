@@ -40,13 +40,13 @@ namespace TCTE.Models
         [UIHint("SystemTypeEnum")]
         public OrderStatus Status { get; set; }
 
-        [Display(Name = "创建时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
+        [Display(Name = "创建时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime CreatedDate { get; set; }
 
-        [Display(Name = "开始处理时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
+        [Display(Name = "开始处理时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime? StartTime { get; set; }
 
-        [Display(Name = "完成时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd hh:mm}")]
+        [Display(Name = "完成时间"), DisplayFormat(DataFormatString = "{0:yyyy-MM-dd HH:mm}")]
         public DateTime? EndTime { get; set; }
 
         [Display(Name = "备注"), MaxLength(200)]
