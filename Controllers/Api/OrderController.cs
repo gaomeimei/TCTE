@@ -114,7 +114,7 @@ namespace TCTE.Controllers.Api
                     order.OrderDetails.Add(new OrderDetail()
                     {
                         DecisionNumber = punish.DecisionNumber,
-                        Deduction = punish.Deduction,
+                        Deduction = punish.Dedution,
                         PeccancyAddress = punish.PeccancyAddress,
                         PeccancyBehavior  = punish.PeccancyBehavior,
                         PeccancyTime = punish.PeccancyTime,

@@ -12,6 +12,7 @@
     <th>创建日期</th>
     <th>最后登录日期</th>
     <th>额外查询次数</th>
+    <th>操作</th>
 }
 
 @section ListBody{
@@ -24,6 +25,7 @@
             <td>@Html.DisplayFor(a => item.CreatedDate)</td>
             <td>@Html.DisplayFor(a => item.LastLoginDate)</td>
             <td>@Html.DisplayFor(a => item.ExtraQueryCount)</td>
+            <td>@Html.ActionLink("修改密码", "ModifyPwd", new { UserId = item.Id }, new { @class = "btn btn-info btn-sm btn-icon" })</td>
         </tr>
     }
 }

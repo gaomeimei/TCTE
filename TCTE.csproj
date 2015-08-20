@@ -172,6 +172,7 @@
     <Compile Include="Controllers\TerminalController.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
     <Compile Include="ViewModel\ModifyPwdModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\PeccancyInfo.cs" />
     <Compile Include="ViewModel\Punishment.cs" />
     <Compile Include="ViewModel\TerminalInitViewModel.cs" />
@@ -249,6 +250,7 @@
     <Content Include="assets\images\logo-white-bg%402x.png" />
     <Content Include="assets\images\logo-white-bg.png" />
     <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\logo_dj.png" />
     <Content Include="assets\images\news-image-widget-2.png" />
     <Content Include="assets\images\news-image-widget-3.png" />
     <Content Include="assets\images\news-image-widget-4.png" />
@@ -1213,6 +1215,7 @@
     <Content Include="Views\Client\Details.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Shared\SideBarMenu.cshtml" />
+    <Content Include="Views\User\ModifyPwd.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

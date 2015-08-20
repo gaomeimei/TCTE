@@ -11,7 +11,7 @@ namespace TCTE.ViewModel
         public DateTime? PeccancyTime { get; set; }
         public string PeccancyAddress { get; set; }
         public string PeccancyBehavior { get; set; }
-        public int Deduction { get; set; }
+        public int Dedution { get; set; }
         public decimal? Money { get; set; }
         public string OrderCode { get; set; }
         public string[] Images { get; set; }

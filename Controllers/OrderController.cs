@@ -110,7 +110,13 @@ namespace TCTE.Controllers
         public ActionResult Details(int id)
         {
             var order = db.Orders.Include(o => o.OrderDetails).Include(o => o.SalesMan).SingleOrDefault(o => o.Id == id);
-            return View(order);
+            var orderImages = db.Database.SqlQuery<OrderImage>(@"SELECT  *
+FROM    dbo.OrderImage
+WHERE   DecisionNumber IN ( SELECT  DecisionNumber
+                            FROM    dbo.OrderDetail
+                            WHERE   OrderId = "+id.ToString()+")").ToList();
+            ViewBag.IsAdmin = RoleHelper.IsInRole(SystemRole.SUPER_ADMIN);
+            return View(new OrderViewModel { Order = order, OrderImages = orderImages });
         }
     }
 }
