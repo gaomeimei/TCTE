@@ -135,12 +135,17 @@ namespace TCTE.Controllers
         {
             try
             {
+                var user = db.Users.Where(u => u.CompanyId == id).SingleOrDefault();
+                if (user != null)
+                {
+                    db.Users.Remove(user);
+                }
                 Company company = db.Companies.Find(id);
                 db.Companies.Remove(company);
                 db.SaveChanges();
                 return Json("success");
             }
-            catch(Exception)
+            catch(Exception ex)
             {
                 return HttpNotFound();
             }

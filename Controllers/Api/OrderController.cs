@@ -178,6 +178,34 @@ namespace TCTE.Controllers.Api
             });
         }
 
+        [IdentityBasicAuthentication(false)]
+        [HttpGet]
+        [Route("api/decision/{decisionNumber}/{isPay}")]
+        public HttpResponseMessage Pay(string decisionNumber,int isPay)
+        {
+            using (var db = new TCTEContext())
+            {
+                var detail = db.OrderDetails.Where(o => o.DecisionNumber == decisionNumber).SingleOrDefault();
+                if (detail != null)
+                {
+                    detail.IsPay = isPay==0?false:true;
+                    db.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                    {
+                        StatusCode = APIResultObject.OK,
+                        Description = "success",
+                        Result = ""
+                    });
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+            {
+                StatusCode = APIResultObject.NotFound,
+                Description = "没有找到请求的决定书编号",
+                Result = ""
+            });
+        }
+
         private string GetToken()
         {
             return (Thread.CurrentPrincipal.Identity as BasicAuthenticationIdentity).AccessToken;

@@ -27,13 +27,13 @@ namespace TCTE.Controllers
 
             PlateNumber = PlateNumber.ToUpper();
             //查违章信息
-            var peccancyInfos = PeccancyHelper.GetPeccancyInfo(PlateNumber, VIN);
+            var car = PeccancyHelper.GetPeccancyInfo2(PlateNumber, VIN);
 
             //回传页面
             ViewBag.PlateNumber = PlateNumber;
             ViewBag.VIN = VIN;
 
-            return View(peccancyInfos);
+            return View(car);
         }
 
         //生成订单

@@ -75,5 +75,65 @@ namespace TCTE.Utility
 
             return list;
         }
+
+        /// <summary>
+        /// 根据车牌号和车架号查询违章信息
+        /// </summary>
+        /// <param name="PlateNumber">车牌号, 不带"川字"</param>
+        /// <param name="VIN">车架号</param>
+        /// <returns></returns>
+        public static Car GetPeccancyInfo2(string PlateNumber, string VIN)
+        {
+            if (!string.IsNullOrEmpty(PlateNumber) && PlateNumber[0] == '川')
+            {
+                PlateNumber = PlateNumber.Substring(1);
+            }
+
+            string json = RequestPeccancyJson(PlateNumber, VIN);
+
+            Car car = new Car();
+            try
+            {
+                JObject obj = JObject.Parse(json);
+                if (Convert.ToString(obj["state"]) == "0")
+                {
+                    var datazt = Convert.ToString(obj["datazt"]);
+                    if (datazt == "1")
+                    {
+                        //car info
+                        car.Type = Convert.ToString(obj["clxx"]["hpzl"].ToString());
+                        car.PlatNumber = Convert.ToString(obj["clxx"]["hphm"].ToString());
+                        car.Purpose = Convert.ToString(obj["clxx"]["syxz"].ToString());
+                        car.Owner = Convert.ToString(obj["clxx"]["syr"].ToString());
+                        car.EndDate1 = Convert.ToDateTime(obj["clxx"]["yxqz"].ToString());
+                        car.EndDate2 = Convert.ToDateTime(obj["clxx"]["qzbfqz"].ToString());
+                        car.PhoneNumber = Convert.ToString(obj["clxx"]["syrsjhm"].ToString());
+                        car.Status = Convert.ToString(obj["clxx"]["zt"].ToString());
+                        //PeccanyInfo
+                        List<PeccancyInfo> list = new List<PeccancyInfo>();
+                        var illegal = (from o in obj["data"][0]["illegal"] select o).ToList();
+                        foreach (var item in illegal)
+                        {
+                            list.Add(new PeccancyInfo
+                            {
+                                PlateNumber = PlateNumber,
+                                Time = Convert.ToDateTime(item["wfsj"].ToString()),
+                                Address = Convert.ToString(item["wfdz"].ToString()),
+                                Behavior = Convert.ToString(item["wfxw"].ToString()),
+                                Money = Convert.ToDecimal(item["fkje"].ToString()),
+                                Deduction = Convert.ToInt32(item["jf"].ToString())
+                            });
+                        }
+                        car.PeccancyInfos = list;
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+            return car;
+        }
     }
 }

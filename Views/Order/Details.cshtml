@@ -56,14 +56,13 @@
     <hr />
     <table class="table table-striped table-bordered">
         <tr>
-            <th>决定书编号</th>
-            <th>违法时间</th>
+            <th style='width:150px'>决定书编号</th>
+            <th style='width:150px'>违法时间</th>
             <th>违法地点</th>
             <th>违法行为</th>
-            <th>罚款金额</th>
-            <th>扣分</th>
+            <th style='width:100px'>罚款金额</th>
+            <th style='width:80px'>扣分</th>
             <th>是否交费</th>
-            <th>银行流水号</th>
         </tr>
         @if (Model.Order.OrderDetails.Count == 0)
         {
@@ -83,7 +82,6 @@
                     <td>@Html.DisplayFor(a => item.Money)</td>
                     <td>@Html.DisplayFor(a => item.Deduction)</td>
                     <td>@(item.IsPay.HasValue ? (item.IsPay.Value ? "是" : "否") : "-")</td>
-                    <td>@Html.DisplayFor(a => item.BankSequenceNumber)</td>
                 </tr>
                 if (ViewBag.IsAdmin)
                 {

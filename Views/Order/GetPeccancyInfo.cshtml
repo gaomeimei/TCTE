@@ -1,14 +1,15 @@
-﻿@model IEnumerable<TCTE.ViewModel.PeccancyInfo>
+﻿@model TCTE.ViewModel.Car
 @using TCTE.Utility;
 
 @{
-    ViewBag.Title = "违章信息";
+    ViewBag.Title = "违法信息";
     Layout = "~/Views/Shared/_FormLayout.cshtml";
 }
 
-@if (Model.Count() > 0)
+@if (Model.PeccancyInfos.Count > 0)
 {
-    <div class="text-right">
+    <div class="clearfix">
+    <div class="pull-right">
         @if (RoleHelper.IsInRole(SystemRole.COMPANY_ADMIN))
         {
             using (Html.BeginForm("Create", "Order", FormMethod.Post))
@@ -20,27 +21,49 @@
         }
     </div>
 
-    <div id="peccancys">
-        @foreach (var item in Model)
+    <div id="carInfo" class="pull-left">
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(m => m.Type)</dt>
+            <dd>@Html.DisplayFor(m => m.Type)</dd>
+            <dt>@Html.DisplayNameFor(m => m.PlatNumber)</dt>
+            <dd>@Html.DisplayFor(m => m.PlatNumber)</dd>
+            <dt>@Html.DisplayNameFor(m => m.Purpose)</dt>
+            <dd>@Html.DisplayFor(m => m.Purpose)</dd>
+            <dt>@Html.DisplayNameFor(m => m.Owner)</dt>
+            <dd>@Html.DisplayFor(m => m.Owner)</dd>
+            <dt>@Html.DisplayNameFor(m => m.EndDate1)</dt>
+            <dd>@Html.DisplayFor(m => m.EndDate1)</dd>
+            <dt>@Html.DisplayNameFor(m => m.EndDate2)</dt>
+            <dd>@Html.DisplayFor(m => m.EndDate2)</dd>
+            <dt>@Html.DisplayNameFor(m => m.PhoneNumber)</dt>
+            <dd>@Html.DisplayFor(m => m.PhoneNumber)</dd>
+            <dt>@Html.DisplayNameFor(m => m.Status)</dt>
+            <dd>@Html.DisplayFor(m => m.Status)</dd>
+        </dl>
+    </div>
+    </div>
+    
+    <div id="peccancys" class="clearfix">
+        @foreach (TCTE.ViewModel.PeccancyInfo item in Model.PeccancyInfos)
         {
             <hr />
             <dl class="dl-horizontal">
-                <dt>@Html.DisplayNameFor(m => m.PlateNumber)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].PlateNumber)</dt>
                 <dd>@Html.DisplayFor(m => item.PlateNumber)</dd>
 
-                <dt>@Html.DisplayNameFor(m => m.Time)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].Time)</dt>
                 <dd>@Html.DisplayFor(m => item.Time)</dd>
 
-                <dt>@Html.DisplayNameFor(m => m.Address)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].Address)</dt>
                 <dd>@Html.DisplayFor(m => item.Address)</dd>
 
-                <dt>@Html.DisplayNameFor(m => m.Behavior)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].Behavior)</dt>
                 <dd>@Html.DisplayFor(m => item.Behavior)</dd>
 
-                <dt>@Html.DisplayNameFor(m => m.Money)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].Money)</dt>
                 <dd>@Html.DisplayFor(m => item.Money)</dd>
 
-                <dt>@Html.DisplayNameFor(m => m.Deduction)</dt>
+                <dt>@Html.DisplayNameFor(m => m.PeccancyInfos[0].Deduction)</dt>
                 <dd>@Html.DisplayFor(m => item.Deduction)</dd>
             </dl>
         }
@@ -48,7 +71,7 @@
 }
 else
 {
-    @:没有违章信息
+    @:没有违法信息
     <hr />
 }
 
