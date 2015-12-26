@@ -8,7 +8,7 @@ using TCTE.ViewModel;
 using System.Data.Entity;
 using System.Web.Security;
 using TCTE.Filters;
-
+using TCTE.Utility;
 
 namespace TCTE.Controllers
 {
@@ -32,37 +32,36 @@ namespace TCTE.Controllers
                 throw new Exception("请传递正确的参数");
             }
             int userId = int.Parse(Request.QueryString["userId"]);
-            return View();
+            return View(new ModifyPwdModel() { OldPwd = "00000000" });
         }
         [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ModifyPwd(ModifyPwdModel model)
         {
-            if (ModelState.IsValid)
+            //加密
+            model.NewPwd = model.NewPwdConfirm = Utility.EncryptHelper.MD5Encrypt(model.NewPwd);
+            //model.OldPwd = Utility.EncryptHelper.MD5Encrypt(model.OldPwd);
+            //取得当前用户
+            var sessionUser = Session["user"] as User;
+            using (TCTEContext db = new TCTEContext())
             {
-                //加密
-                model.NewPwd = model.NewPwdConfirm = Utility.EncryptHelper.MD5Encrypt(model.NewPwd);
-                model.OldPwd = Utility.EncryptHelper.MD5Encrypt(model.OldPwd);
-                //取得当前用户
-                var sessionUser = Session["user"] as User;
-                using (TCTEContext db = new TCTEContext())
+                int userId = int.Parse(Request.QueryString["userId"]);
+                var user = db.Users.Where(u => u.Id == userId).SingleOrDefault();
+                //校验原密码
+                if (!RoleHelper.IsInRole(SystemRole.SUPER_ADMIN))
                 {
-                    int userId = int.Parse(Request.QueryString["userId"]);
-                    var user = db.Users.Where(u => u.Id == userId).SingleOrDefault();
-                    //校验原密码
                     if (user.Password != model.OldPwd)
                     {
                         ModelState.AddModelError("", "原密码不正确");
                         return View();
                     }
-                    //修改密码
-                    user.Password = model.NewPwdConfirm;
-                    db.SaveChanges();
-                    return Redirect("/User/index");
                 }
+                //修改密码
+                user.Password = model.NewPwdConfirm;
+                db.SaveChanges();
+                return Redirect("/User/index");
             }
-            return View();
         }
 
     }

@@ -44,7 +44,7 @@ namespace TCTE.Models
 
     }
 
-    public class TCTEDBInitializer : DropCreateDatabaseIfModelChanges<TCTEContext>
+    public class TCTEDBInitializer : CreateDatabaseIfNotExists<TCTEContext>
     {
         protected override void Seed(TCTEContext context)
         {
@@ -53,15 +53,28 @@ namespace TCTE.Models
             context.Users.Add(new User()
             {
                 UserName = "admin",
-                Password = Utility.EncryptHelper.MD5Encrypt("4rekeyAJ"),
+                Password = Utility.EncryptHelper.MD5Encrypt("qianyunadmin"),
                 CreatedDate = DateTime.Now
             });
             context.SaveChanges();
             //2.city and province and roles
             var province = new Province() { Name = "四川", Abbr = "川" };
-            var city = new City { Name = "成都", Abbr = "CD", Provice = province };
             context.Provinces.Add(province);
-            context.Cities.Add(city);
+            context.Cities.Add(new City { Name = "成都", Abbr = "CD", Provice = province });
+            context.Cities.Add(new City { Name = "自贡市", Abbr = "ZG", Provice = province });
+            context.Cities.Add(new City { Name = "泸州市", Abbr = "LZ", Provice = province });
+            context.Cities.Add(new City { Name = "攀枝花市", Abbr = "PZH", Provice = province });
+            context.Cities.Add(new City { Name = "南充市", Abbr = "NC", Provice = province });
+            context.Cities.Add(new City { Name = "达州市", Abbr = "DZ", Provice = province });
+            context.Cities.Add(new City { Name = "乐山市", Abbr = "LS", Provice = province });
+            context.Cities.Add(new City { Name = "雅安市", Abbr = "YA", Provice = province });
+            context.Cities.Add(new City { Name = "宜宾市", Abbr = "YB", Provice = province });
+            context.Cities.Add(new City { Name = "内江市", Abbr = "NJ", Provice = province });
+            context.Cities.Add(new City { Name = "眉山市", Abbr = "MS", Provice = province });
+            context.Cities.Add(new City { Name = "遂宁市", Abbr = "SN", Provice = province });
+            context.Cities.Add(new City { Name = "阿坝藏族羌族自治州", Abbr = "ABZ", Provice = province });
+            context.Cities.Add(new City { Name = "甘孜藏族自治州", Abbr = "GZZ", Provice = province });
+            context.Cities.Add(new City { Name = "凉山彝族自治州", Abbr = "LSZ", Provice = province });
             var roles = new List<Role>();
             roles.Add(new Role { Name = "超级管理员" });
             roles.Add(new Role { Name = "商家管理员" });
@@ -85,8 +98,42 @@ namespace TCTE.Models
             };
             context.Functions.AddRange(functions);
             context.SaveChanges();
-            //5.tokens
-            //todo: 为设备厂商分配token
+            //5.companies
+            Random rand = new Random();
+            var companies = new List<Company>();
+            for (int i = 1; i <= 2; i++)
+            {
+                var phone = "1390000" + rand.Next(1000, 9999);
+                companies.Add(new Company()
+                {
+                    Name = "测试公司" + i.ToString(),
+                    Abbr = "TE" + i.ToString(),
+                    CreatedDate = DateTime.Now,
+                    ContactName = "联系人某某",
+                    Users = new List<User>
+                    {
+                        new User()
+                        {
+                            UserName = "test"+i.ToString(),
+                            Password = Utility.EncryptHelper.MD5Encrypt("666666"),
+                            CreatedDate = DateTime.Now, 
+                            Role = roles[1]
+                        }
+                    },
+                    Address = "测试公司" + i.ToString() + "的地址",
+                    Phone = phone,
+                    City = context.Cities.SingleOrDefault(c=>c.Abbr=="CD")
+                });
+            }
+            context.Companies.AddRange(companies);
+            context.SaveChanges();
+            //2.1 generate company code
+            context.Companies.Include(c => c.City).ToList().All(c =>
+            {
+                c.Code = string.Format("{0}{1}{2:000}", c.City.Abbr, c.Abbr, c.Id);
+                return true;
+            });
+            context.SaveChanges();
 
         }
     }

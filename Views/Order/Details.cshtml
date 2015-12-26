@@ -93,7 +93,7 @@
                             <td colspan="7">
                                 @foreach (var image in images)
                                 {
-                                    <img src="data:image/png;base64,@image.ImageContent" style="width:200px;margin-right:20px;" />
+                                    <a href="javascript:void(0);" data-img="data:image/png;base64,@image.ImageContent" class="order-img">查看图片</a>
                                 }
                             </td>
                         </tr>
@@ -107,3 +107,25 @@
 <p>
     @Html.ActionLink("返回列表", "Index", null, new { @class = "btn btn-pink" })
 </p>
+<div class="modal fade" id="modalImage" tabindex="-1" role="dialog" aria-labelledby="modalImageLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="modalImageLabel">订单照片</h4>
+            </div>
+            <div class="modal-body">
+                <img style="padding:0px 30px;" />
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".order-img").click(function () {
+            $("#modalImage").appendTo("body");
+            $("#modalImage .modal-body img").attr("src", $(this).data("img"));
+            $("#modalImage").modal("show", { backdrop: 'fade' });
+        });
+    });
+</script>
