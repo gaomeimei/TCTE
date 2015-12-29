@@ -35,6 +35,29 @@ namespace TCTE.Controllers
 
             return View(car);
         }
+        /// <summary>
+        /// 获取驾驶人信息
+        /// </summary>
+        /// <param name="plateNumber"></param>
+        /// <param name="archiveId"></param>
+        /// <returns></returns>
+        public JsonResult GetDriverInfo(string personNo, string archiveId)
+        {
+            var driver = PeccancyHelper.GetDriverInfo(personNo, archiveId);
+            if (driver == null)
+            {
+                return new JsonResult()
+                {
+                    JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                    Data = ""
+                };
+            }
+            return new JsonResult()
+            {
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Data = driver
+            };
+        }
 
         //生成订单
         [HttpPost]

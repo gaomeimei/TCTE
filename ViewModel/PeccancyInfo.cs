@@ -53,4 +53,23 @@ namespace TCTE.ViewModel
         public List<PeccancyInfo> PeccancyInfos { get; set; }
 
     }
+    /// <summary>
+    /// 驾驶员信息
+    /// </summary>
+    public class Driver
+    {
+        public string Name { get; set; }
+
+        public string Level { get; set; }
+
+        public string Status { get; set; }
+
+        public string Organization { get; set; }
+
+        public string Integral { get; set; }
+
+        public string Phone { get; set; }
+
+        public string StartDate { get; set; }
+    }
 }
