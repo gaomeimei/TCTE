@@ -14,4 +14,14 @@ namespace TCTE.ViewModel
         [Required]
         public string FingerPrint { get; set; }
     }
+
+    public class TerminalInitViewModel_V2
+    {
+        [Required]
+        public string AccessToken { get; set; }
+        [Required]
+        public string SalesManCode { get; set; }
+        [Required]
+        public string PersonCardNo { get; set; }
+    }
 }

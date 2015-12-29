@@ -172,6 +172,89 @@ namespace TCTE.Controllers.Api
                 Result = ""
             });
         }
+
+        /// <summary>
+        /// Device init request
+        /// </summary>
+        /// <returns></returns>
+        [IdentityBasicAuthentication(false)]
+        [HttpPost]
+        [Route("api/Terminal/Init_V2")]
+        public HttpResponseMessage Init_V2([FromBodyAttribute] TerminalInitViewModel_V2 model)
+        {
+            if (ModelState.IsValid)
+            {
+                string accessToken = model.AccessToken;
+                using (var context = new TCTEContext())
+                {
+                    var terminal = context.Terminals.Where(t => t.AccessToken == accessToken).SingleOrDefault();
+                    if (terminal == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidToken,
+                            Description = "授权码错误",
+                            Result = ""
+                        });
+                    }
+                    if (terminal.Status != Models.SystemType.TerminalStatus.NotInitialized)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InValidStatus,
+                            Description = "设备状态异常，不能进行员工绑定",
+                            Result = ""
+                        });
+                    }
+                    var salesMan = context.SalesMen.Where(s => s.Code.ToLower() == model.SalesManCode.ToLower() && s.CompanyId == terminal.CompanyId).SingleOrDefault();
+                    if (salesMan == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidCode,
+                            Description = "员工编码错误",
+                            Result = ""
+                        });
+                    }
+                    if (salesMan.IdentityCard != model.PersonCardNo)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidPersonCode,
+                            Description = "身份证号码不匹配",
+                            Result = ""
+                        });
+                    }
+                    if (salesMan.TerminalId > 0)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                        {
+                            StatusCode = APIResultObject.InvalidBinding,
+                            Description = "员工已经绑定终端",
+                            Result = ""
+                        });
+                    }
+                    salesMan.TerminalId = terminal.Id;
+                    terminal.SalesManId = salesMan.Id;
+                    //terminal.FingerPrint = model.FingerPrint;
+                    terminal.LastInitialDate = DateTime.Now;
+                    terminal.Status = Models.SystemType.TerminalStatus.Normal;
+                    context.SaveChanges();
+                    return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                    {
+                        StatusCode = APIResultObject.OK,
+                        Description = "success",
+                        Result = ""
+                    });
+                }
+            }
+            return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+            {
+                StatusCode = APIResultObject.InValidRequest,
+                Description = "请提供完整参数",
+                Result = ""
+            });
+        }
         /// <summary>
         /// Device status
         /// </summary>
@@ -204,8 +287,24 @@ namespace TCTE.Controllers.Api
                 return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                 {
                     StatusCode = APIResultObject.OK,
-                    Description = "success",
+                    Description = ternimal==null?"failed":"success",
                     Result = ternimal==null? false: true 
+                });
+            }
+        }
+        [HttpPost]
+        [Route("api/Terminal/Verify_V2")]
+        public HttpResponseMessage Verify_V2([FromBody] string personNo)
+        {
+            string token = GetToken();
+            using (var context = new TCTEContext())
+            {
+                var ternimal = context.Terminals.Where(t => t.AccessToken == token && t.SalesMan.IdentityCard == personNo).SingleOrDefault();
+                return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
+                {
+                    StatusCode = APIResultObject.OK,
+                    Description = ternimal == null ? "failed" : "success",
+                    Result = ternimal == null ? false : true
                 });
             }
         }
