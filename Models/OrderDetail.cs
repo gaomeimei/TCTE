@@ -32,6 +32,11 @@ namespace TCTE.Models
         public bool? IsPay { get; set; }
         [Display(Name = "银行流水号"), MaxLength(50)]
         public string BankSequenceNumber { get; set; }
+        [Display(Name = "违法人身份证号"), MaxLength(50)]
+        public string PeccancyPersonNo { get; set; }
+        [Display(Name = "扣分人身份证号"), MaxLength(50)]
+        public string HandlePersonNo { get; set; }
+
 
         //外键属性
         [Required, Display(Name = "订单编号")]

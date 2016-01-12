@@ -1172,6 +1172,9 @@
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="PHP\DES.php" />
     <Content Include="PHP\mm14.php" />
+    <Content Include="assets\js\toastr\toastr.css.map">
+      <DependentUpon>toastr.css</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\publishtcte.pubxml" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />

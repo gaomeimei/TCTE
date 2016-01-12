@@ -15,5 +15,7 @@ namespace TCTE.ViewModel
         public decimal? Money { get; set; }
         public string OrderCode { get; set; }
         public string[] Images { get; set; }
+        public string PeccancyPersonNo { get; set; }
+        public string HandlePersonNo { get; set; }
     }
 }

@@ -33,7 +33,8 @@ namespace TCTE.Controllers.Api
                         ClientPhone = o.Phone,
                         ClientAddress = o.Address,
                         PlateNumber = o.PlateNumber,
-                        State = o.Status
+                        State = o.Status,
+                        Comment = o.Comment
                     }).ToList();
                 return Request.CreateResponse(HttpStatusCode.OK, new APIResultObject()
                 {
@@ -118,7 +119,9 @@ namespace TCTE.Controllers.Api
                         PeccancyAddress = punish.PeccancyAddress,
                         PeccancyBehavior  = punish.PeccancyBehavior,
                         PeccancyTime = punish.PeccancyTime,
-                        Money = punish.Money
+                        Money = punish.Money,
+                        PeccancyPersonNo = punish.PeccancyPersonNo,
+                        HandlePersonNo = punish.HandlePersonNo
                     });
                     if (punish.Images != null && punish.Images.Length > 0)
                     {
